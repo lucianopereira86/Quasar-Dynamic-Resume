@@ -1,16 +1,7 @@
 <template>
   <q-dialog v-model="show" position="left" v-if="LANG.jobs">
     <q-layout style="min-width: 50vw;min-height:20vh;max-height:80vh">
-      <q-toolbar class="bg-accent text-white">
-        <q-item>
-          <q-item-section avatar>
-            <q-icon name="fas fa-user-tie fa" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label class="text-h5">{{LANG.labels.drawer.jobs}}</q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-toolbar>
+      <DrawerTitle icon="fas fa-user-tie fa" :text="LANG.labels.drawer.jobs" />
       <q-card class="full-width full-height" style="overflow-y:auto;max-height:60vh">
         <q-card-section>
           <div class="row">
@@ -51,9 +42,13 @@
 </template>
 
 <script>
+import DrawerTitle from './DrawerTitle'
 export default {
   props: {
     LANG: Object
+  },
+  components: {
+    DrawerTitle
   },
   data () {
     return {

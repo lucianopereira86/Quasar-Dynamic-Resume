@@ -1,16 +1,7 @@
 <template>
   <q-dialog v-model="show" position="left" v-if="LANG.coding">
     <q-layout style="min-width: 60vw; max-width:80vw;min-height:20vh;max-height:80vh">
-      <q-toolbar class="bg-accent text-white">
-        <q-item>
-          <q-item-section avatar>
-            <q-icon name="fas fa-code" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label class="text-h5">{{LANG.labels.drawer.coding}}</q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-toolbar>
+      <DrawerTitle icon="fas fa-code" :text="LANG.labels.drawer.coding" />
       <q-card class="full-width full-height" style="overflow-y:auto;max-height:70vh">
         <q-card-section>
           <div class="row">
@@ -26,8 +17,8 @@
                     </q-avatar>
                   </q-item-section>
                   <q-item-section>
-                    <q-item-label class="text-subtitle1 text-bold">{{tech.name}}</q-item-label>
-                    <q-item-label>
+                    <q-item-label :class="{ 'text-bold': index === 0 }" class="text-subtitle1">{{tech.name}}</q-item-label>
+                    <!-- <q-item-label>
                       <q-rating
                         v-model="tech.rating"
                         size="1.5em"
@@ -35,7 +26,7 @@
                         :color="getColor(tech.rating)"
                         readonly
                       />
-                    </q-item-label>
+                    </q-item-label> -->
                   </q-item-section>
                 </q-item>
               </q-list>
@@ -49,9 +40,13 @@
 
 <script>
 import GeneralMixins from '../mixins/general.mixins'
+import DrawerTitle from './DrawerTitle'
 export default {
   props: {
     LANG: Object
+  },
+  components: {
+    DrawerTitle
   },
   mixins: [GeneralMixins],
   data () {

@@ -1,12 +1,9 @@
 <template>
-  <q-page class="relative-position">
+  <div>
     <div id="my-container" class="absolute-center"></div>
-    <div class="absolute-top text-center text-grey text-h5 q-mt-lg">
-      <cite>"{{LANG.home.message}}"</cite>
-    </div>
     <div class="absolute-center">
       <q-avatar size="200px">
-        <q-img :src="LANG.home.image" />
+        <q-img :src="LANG.home.image"/>
       </q-avatar>
       <BtnMenu
         :offset="[50, -190]"
@@ -51,61 +48,47 @@
         @click.native="openDrawer(5)"
       />
     </div>
-    <DrawerAwards ref="DrawerAwards" :LANG="LANG" />
-    <DrawerEducation ref="DrawerEducation" :LANG="LANG" />
-    <DrawerPortfolio ref="DrawerPortfolio" :LANG="LANG" />
-    <DrawerCoding ref="DrawerCoding" :LANG="LANG" />
-    <DrawerProfile ref="DrawerProfile" :LANG="LANG" />
-    <DrawerJobs ref="DrawerJobs" :LANG="LANG" />
-  </q-page>
+  </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import BtnMenu from '../components/BtnMenu'
-import DrawerAwards from '../components/DrawerAwards'
-import DrawerEducation from '../components/DrawerEducation'
-import DrawerPortfolio from '../components/DrawerPortfolio'
-import DrawerCoding from '../components/DrawerCoding'
-import DrawerProfile from '../components/DrawerProfile'
-import DrawerJobs from '../components/DrawerJobs'
+import BtnMenu from './BtnMenu'
 export default {
-  name: 'PageIndex',
+  props: {
+    LANG: Object
+  },
   components: {
-    BtnMenu,
-    DrawerAwards,
-    DrawerEducation,
-    DrawerPortfolio,
-    DrawerCoding,
-    DrawerProfile,
-    DrawerJobs
+    BtnMenu
   },
   data () {
     return {
       chart: null,
-      arrayDrawer: [],
-      color: '#9c27b0'
+      arrayDrawer: []
     }
   },
-  computed: {
-    ...mapState('General', ['LANG'])
-  },
   mounted () {
-    this.arrayDrawer = [{
-      name: 'Awards'
-    }, {
-      name: 'Education'
-    }, {
-      name: 'Portfolio'
-    }, {
-      name: 'Coding'
-    }, {
-      name: 'Profile'
-    }, {
-      name: 'Jobs'
-    }]
+    this.arrayDrawer = [
+      {
+        name: 'Awards'
+      },
+      {
+        name: 'Education'
+      },
+      {
+        name: 'Portfolio'
+      },
+      {
+        name: 'Coding'
+      },
+      {
+        name: 'Profile'
+      },
+      {
+        name: 'Jobs'
+      }
+    ]
     this.$Highcharts.setOptions({
-      colors: [this.color]
+      colors: [this.LANG.home.menuBgColor]
     })
 
     this.RenderPieChart('my-container', [
@@ -163,17 +146,20 @@ export default {
             type: 'pie',
             name: 'Browser share',
             data: dataList
-          }]
+          }
+        ]
       })
     },
     openDrawer (index, isColumnClick) {
       let drawer = this.arrayDrawer[index]
-      if (!isColumnClick) { this.chart.series[0].data[index].firePointEvent('click') }
+      if (!isColumnClick) {
+        this.chart.series[0].data[index].firePointEvent('click')
+      }
       this.$refs[`Drawer${drawer.name}`].open()
     }
   }
 }
 </script>
 
-<style scoped>
+<style>
 </style>

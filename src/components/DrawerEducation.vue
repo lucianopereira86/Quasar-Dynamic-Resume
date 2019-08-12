@@ -1,16 +1,7 @@
 <template>
   <q-dialog v-model="show" position="right" v-if="LANG.education">
     <q-layout style="min-width: 50vw;min-height:20vh;max-height:80vh">
-      <q-toolbar class="bg-accent text-white">
-        <q-item>
-          <q-item-section avatar>
-            <q-icon name="fas fa-graduation-cap" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label class="text-h5">{{LANG.labels.drawer.education}}</q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-toolbar>
+      <DrawerTitle icon="fas fa-graduation-cap" :text="LANG.labels.drawer.education" />
       <q-card class="full-width full-height" style="overflow-y:auto;max-height:70vh">
         <q-card-section>
           <q-list v-for="(school, index) in LANG.education.schools" :key="index" class="q-mb-lg">
@@ -57,9 +48,13 @@
 
 <script>
 import GeneralMixins from '../mixins/general.mixins'
+import DrawerTitle from './DrawerTitle'
 export default {
   props: {
     LANG: Object
+  },
+  components: {
+    DrawerTitle
   },
   mixins: [GeneralMixins],
   data () {

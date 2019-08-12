@@ -1,18 +1,7 @@
 <template>
   <q-dialog v-model="show" position="left" v-if="LANG.profile">
     <q-layout style="width: 50vw;min-height:70vh">
-      <q-toolbar class="bg-accent text-white">
-        <q-toolbar-title class="text-h6 q-pa-sm">
-          <q-item>
-            <q-item-section avatar>
-              <q-icon name="fas fa-address-card" />
-            </q-item-section>
-            <q-item-section>
-              <q-item-label class="text-h5">{{LANG.labels.drawer.profile}}</q-item-label>
-            </q-item-section>
-          </q-item>
-        </q-toolbar-title>
-      </q-toolbar>
+      <DrawerTitle icon="fas fa-address-card" :text="LANG.labels.drawer.profile" />
       <q-card class="full-width full-height" style="overflow-y:auto;max-height:70vh">
         <q-card-section class="text-center bg-grey-2">
           <q-avatar size="200px">

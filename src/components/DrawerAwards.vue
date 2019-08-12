@@ -1,16 +1,7 @@
 <template>
   <q-dialog v-model="show" position="right" v-if="LANG.awards">
     <q-layout style="min-width: 50vw;min-height:20vh;max-height:80vh">
-      <q-toolbar class="bg-accent text-white">
-        <q-item>
-          <q-item-section avatar>
-            <q-icon name="fas fa-award" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label class="text-h5">{{LANG.labels.drawer.awards}}</q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-toolbar>
+      <DrawerTitle icon="fas fa-award" :text="LANG.labels.drawer.awards" />
       <q-card class="full-width full-height" style="overflow-y:auto;max-height:60vh">
         <q-card-section>
           <q-list v-for="(award, index) in LANG.awards" :key="index" class="q-mb-lg">
@@ -33,9 +24,13 @@
 </template>
 
 <script>
+import DrawerTitle from './DrawerTitle'
 export default {
   props: {
     LANG: Object
+  },
+  components: {
+    DrawerTitle
   },
   data () {
     return {

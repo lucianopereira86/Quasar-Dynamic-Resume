@@ -1,8 +1,13 @@
 <template>
   <q-layout view="lHh Lpr lFf" v-if="LANG">
     <q-header elevated>
-      <q-toolbar class="row">
-        <q-toolbar-title class="col-8 offset-2 text-h2 text-center q-pa-md">{{LANG.home.title}}</q-toolbar-title>
+      <q-toolbar class="row" :class="[LANG.home.navBgColor, LANG.home.navTextColor]">
+        <q-toolbar-title class="col-8 offset-2 text-h4 text-center q-pa-sm">
+          {{LANG.home.title}}
+          <div class="text-subtitle1 text-center text-grey-4">
+            <cite>"{{LANG.home.message}}"</cite>
+          </div>
+        </q-toolbar-title>
         <div class="col-2 text-right">
           <q-avatar @click="selectLang(false)" class="cursor-pointer">
             <q-img :src="LANG.home.flag.BR" />

@@ -1,8 +1,12 @@
 export default {
+  home: {
+    preferences: 'Preferences',
+    files: 'Files'
+  },
   menu: {
     awards: 'Awards',
     education: 'Education',
-    portfolio: 'Github',
+    portfolio: 'Portfolio',
     coding: 'Coding',
     profile: 'Profile',
     jobs: 'Professional'
@@ -10,11 +14,12 @@ export default {
   drawer: {
     awards: 'Events and Awards',
     education: 'Education Background',
-    portfolio: 'Github',
+    portfolio: 'Portfolio',
     coding: 'Coding',
     profile: 'Profile',
     jobs: 'Professional History',
     languages: 'LANGUAGES',
-    reposFound: 'Repositories Found'
+    reposFound: 'Repositories Found',
+    articles: 'Articles'
   }
 }
