@@ -80,7 +80,7 @@
 
               <q-item-section>
                 <q-item-label>
-                  <a :href="LANG.profile.linkedIn.url">{{LANG.profile.linkedIn.id}}</a>
+                  <a :href="LANG.profile.linkedIn.url" target="_blank">{{LANG.profile.linkedIn.id}}</a>
                 </q-item-label>
               </q-item-section>
             </q-item>
