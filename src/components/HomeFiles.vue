@@ -5,7 +5,7 @@
       <span class="text-h6 q-ml-sm">{{LANG.labels.home.files}}</span>
     </q-item-label>
     <q-item
-      v-for="(file, index) in files"
+      v-for="(file, index) in LANG.home.files"
       :key="index"
       class="q-mb-lg text-left"
       clickable
@@ -37,13 +37,9 @@ export default {
   },
   data () {
     return {
-      files: [],
       showPDF: false,
       pdfURL: ''
     }
-  },
-  mounted () {
-    this.files = [...this.LANG.home.files]
   },
   methods: {
     getPrefs () {

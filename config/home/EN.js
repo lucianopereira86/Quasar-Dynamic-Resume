@@ -44,8 +44,13 @@ export default {
   ],
   files: [
     {
-      title: 'Bachelor Degree in Computer Engineering',
-      filename: 'diploma.jpeg'
+      title: 'Example file from url',
+      filename: 'sample.pdf',
+      url: 'http://www.africau.edu/images/default/sample.pdf'
+    },
+    {
+      title: 'Example file for download',
+      filename: 'download.png'
     }
   ]
 }

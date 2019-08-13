@@ -44,8 +44,13 @@ export default {
   ],
   files: [
     {
-      title: 'Diploma de Bacharel em Engenharia da Computação',
-      filename: 'diploma.jpeg'
+      title: 'Exemplo de um arquivo por url',
+      filename: 'sample.pdf',
+      url: 'http://www.africau.edu/images/default/sample.pdf'
+    },
+    {
+      title: 'Exemplo de um arquivo por download',
+      filename: 'download.png'
     }
   ]
 }
