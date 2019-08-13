@@ -1,8 +1,8 @@
 <template>
   <q-dialog v-model="show" position="right" v-if="LANG.education">
-    <q-layout style="min-width: 50vw;min-height:20vh;max-height:80vh">
-      <DrawerTitle icon="fas fa-graduation-cap" :text="LANG.labels.drawer.education" />
-      <q-card class="full-width full-height" style="overflow-y:auto;max-height:70vh">
+    <q-layout style="min-width: 50vw;min-height:20vh;max-height:90vh">
+      <DrawerTitle icon="fas fa-graduation-cap" :text="LANG.labels.drawer.education" :LANG="LANG" />
+      <q-card class="full-width full-height" style="overflow-y:auto;max-height:80vh">
         <q-card-section>
           <q-list v-for="(school, index) in LANG.education.schools" :key="index" class="q-mb-lg">
             <q-item-label header class="text-center">
@@ -16,6 +16,7 @@
               </q-item-section>
             </q-item>
           </q-list>
+          <q-separator />
           <q-list class="row">
             <q-item-label header class="col-12 text-left">
               <span class="text-h6">{{LANG.labels.drawer.languages}}</span>
@@ -29,13 +30,14 @@
               <q-item-section>
                 <q-item-label class="text-subtitle1 text-bold">{{language.name}}</q-item-label>
                 <q-item-label>
-                  <q-rating
+                  {{language.level}}
+                  <!-- <q-rating
                     v-model="language.rating"
                     size="1.5em"
                     icon="star"
                     :color="getColor(language.rating)"
                     readonly
-                  />
+                  />-->
                 </q-item-label>
               </q-item-section>
             </q-item>

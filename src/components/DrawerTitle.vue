@@ -1,13 +1,16 @@
 <template>
-  <q-toolbar :class="[LANG.home.titleBgColor, LANG.home.titleTextColor]">
-    <q-item>
-      <q-item-section avatar>
-        <q-icon :name="icon"/>
-      </q-item-section>
-      <q-item-section>
-        <q-item-label class="text-h5">{{text}}</q-item-label>
-      </q-item-section>
-    </q-item>
+  <q-toolbar :class="[LANG.labels.drawer.titleBgColor, LANG.labels.drawer.titleTextColor]">
+    <div class="row full-width items-center">
+      <div class="col-1 text-center">
+        <q-icon :name="icon" size="25px" />
+      </div>
+      <div class="col-10">
+        <span class="text-h5">{{text}}</span>
+      </div>
+      <div class="col-1">
+        <q-btn round flat class="float-right" icon="close" color="white" v-close-popup></q-btn>
+      </div>
+    </div>
   </q-toolbar>
 </template>
 
@@ -15,7 +18,8 @@
 export default {
   props: {
     icon: String,
-    text: String
+    text: String,
+    LANG: Object
   }
 }
 </script>

@@ -1,18 +1,12 @@
 <template>
-  <q-card class="full-width full-height" style="overflow-y:auto;max-height:60vh">
+  <q-card class="full-width" style="overflow-y:auto;height:70vh">
     <q-card-section>
-      <q-list>
-        <q-item class="q-mb-lg">
-          <q-item-section>
-            <q-item-label>Sourcerer.io</q-item-label>
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>
-              <a :href="LANG.portfolio.sourcererIO" target="_blank">{{LANG.portfolio.sourcererIO}}</a>
-            </q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-list>
+      <div class="row items-center">
+        <div class="col-2 text-bold text-subtitle1 q-ml-md">Sourcerer.io:</div>
+        <div class="col">
+          <a :href="LANG.portfolio.sourcererIO" target="_blank">{{LANG.portfolio.sourcererIO}}</a>
+        </div>
+      </div>
       <q-list>
         <q-item-label header>
           <span>{{`${repos.length} ${LANG.labels.drawer.reposFound}`}}</span>
@@ -20,7 +14,7 @@
         <q-item v-if="loading" class="q-mb-lg">
           <q-item-section>
             <q-item-label avatar>
-              <q-icon name="fas fa-sync-alt fa-spin"/>
+              <q-icon name="fas fa-sync-alt fa-spin" />
             </q-item-label>
           </q-item-section>
         </q-item>

@@ -1,8 +1,8 @@
 <template>
   <q-dialog v-model="show" position="left" v-if="LANG.profile">
-    <q-layout style="width: 50vw;min-height:70vh">
-      <DrawerTitle icon="fas fa-address-card" :text="LANG.labels.drawer.profile" />
-      <q-card class="full-width full-height" style="overflow-y:auto;max-height:70vh">
+    <q-layout style="width: 50vw;min-height:90vh">
+      <DrawerTitle icon="fas fa-address-card" :text="LANG.labels.drawer.profile" :LANG="LANG" />
+      <q-card class="full-width" style="overflow-y:auto;max-height:85vh">
         <q-card-section class="text-center bg-grey-2">
           <q-avatar size="200px">
             <q-img :src="LANG.profile.image" />
@@ -69,7 +69,7 @@
 
               <q-item-section>
                 <q-item-label>
-                  <a :href="LANG.profile.linkedIn.url" target="_blank">{{LANG.profile.linkedIn.id}}</a>
+                  <a :href="LANG.profile.linkedIn" target="_blank">{{LANG.profile.linkedIn}}</a>
                 </q-item-label>
               </q-item-section>
             </q-item>
@@ -98,9 +98,13 @@
 </template>
 
 <script>
+import DrawerTitle from './DrawerTitle'
 export default {
   props: {
     LANG: Object
+  },
+  components: {
+    DrawerTitle
   },
   data () {
     return {

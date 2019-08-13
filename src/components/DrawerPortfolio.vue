@@ -1,28 +1,26 @@
 <template>
   <q-dialog v-model="show" position="right" v-if="LANG.portfolio">
-    <q-layout style="min-width: 50vw;min-height:20vh;max-height:80vh">
-      <DrawerTitle icon="fas fa-git-alt" :text="LANG.labels.drawer.portfolio"/>
+    <q-layout style="min-width: 50vw;min-height:20vh;max-height:90vh">
+      <DrawerTitle icon="fab fa-git-alt" :text="LANG.labels.drawer.portfolio" :LANG="LANG" />
       <q-tabs
         v-model="tab"
         dense
-        class="text-grey"
+        class="text-grey bg-white q-pt-sm"
         active-color="primary"
         indicator-color="primary"
         align="justify"
         narrow-indicator
       >
-        <q-tab name="github" label="GitHub"/>
-        <q-tab name="articles" :label="LANG.labels.drawer.articles"/>
+        <q-tab name="github" label="GitHub" />
+        <q-tab name="articles" :label="LANG.labels.drawer.articles" />
       </q-tabs>
 
-      <q-separator/>
-
-      <q-tab-panels v-model="tab" animated>
+      <q-tab-panels v-model="tab" animated style="overflow-y:auto;max-height:80vh">
         <q-tab-panel name="github">
-          <PortfolioGithub :LANG="LANG"/>
+          <PortfolioGithub :LANG="LANG" />
         </q-tab-panel>
         <q-tab-panel name="articles">
-          <PortfolioArticles :LANG="LANG"/>
+          <PortfolioArticles :LANG="LANG" />
         </q-tab-panel>
       </q-tab-panels>
     </q-layout>
@@ -30,6 +28,7 @@
 </template>
 
 <script>
+import DrawerTitle from './DrawerTitle'
 import PortfolioGithub from './PortfolioGithub'
 import PortfolioArticles from './PortfolioArticles'
 export default {
@@ -37,6 +36,7 @@ export default {
     LANG: Object
   },
   components: {
+    DrawerTitle,
     PortfolioGithub,
     PortfolioArticles
   },

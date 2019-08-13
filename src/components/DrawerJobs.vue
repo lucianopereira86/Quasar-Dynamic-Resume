@@ -1,8 +1,8 @@
 <template>
   <q-dialog v-model="show" position="left" v-if="LANG.jobs">
-    <q-layout style="min-width: 50vw;min-height:20vh;max-height:80vh">
-      <DrawerTitle icon="fas fa-user-tie fa" :text="LANG.labels.drawer.jobs" />
-      <q-card class="full-width full-height" style="overflow-y:auto;max-height:60vh">
+    <q-layout style="min-width: 50vw;min-height:20vh;max-height:90vh">
+      <DrawerTitle icon="fas fa-user-tie fa" :text="LANG.labels.drawer.jobs" :LANG="LANG" />
+      <q-card class="full-width full-height" style="overflow-y:auto;max-height:80vh">
         <q-card-section>
           <div class="row">
             <div class="col" v-for="(jobs, index) in LANG.jobs" :key="index">

@@ -19,13 +19,13 @@ export default {
       flag:
         'https://cdn2.iconfinder.com/data/icons/flag-country-emblem/512/flag-08-512.png',
       name: 'Portuguese',
-      rating: 5
+      level: 'Native'
     },
     {
       flag:
         'https://cdn3.iconfinder.com/data/icons/50-flags-of-the-world-circular-shape-2/60/Circular_world_Flag_145-512.png',
       name: 'English',
-      rating: 4
+      level: 'Advanced'
     }
   ]
 }

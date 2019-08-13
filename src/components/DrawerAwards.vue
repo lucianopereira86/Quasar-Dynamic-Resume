@@ -1,8 +1,8 @@
 <template>
   <q-dialog v-model="show" position="right" v-if="LANG.awards">
-    <q-layout style="min-width: 50vw;min-height:20vh;max-height:80vh">
-      <DrawerTitle icon="fas fa-award" :text="LANG.labels.drawer.awards" />
-      <q-card class="full-width full-height" style="overflow-y:auto;max-height:60vh">
+    <q-layout style="min-width: 50vw;min-height:20vh;max-height:90vh">
+      <DrawerTitle icon="fas fa-award" :text="LANG.labels.drawer.awards" :LANG="LANG" />
+      <q-card class="full-width full-height" style="overflow-y:auto;max-height:80vh">
         <q-card-section>
           <q-list v-for="(award, index) in LANG.awards" :key="index" class="q-mb-lg">
             <q-item-label header class="text-center">

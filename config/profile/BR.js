@@ -6,10 +6,7 @@ export default {
   email: 'lucianosousapereira1986@gmail.com',
   location: 'Ananindeua/PA, Brasil',
   whatsapp: '+55 (91) 98131-2116',
-  linkedIn: {
-    url: 'https://www.linkedin.com/in/luciano-pereira-a19629101/',
-    id: 'luciano-pereira-a19629101'
-  },
+  linkedIn: 'https://www.linkedin.com/in/luciano-pereira-a19629101/',
   skype: 'lucianosousapereira1986@gmail.com',
   summary:
     'Desenvolvedor profissional há mais de 4 anos, sendo 1 ano como freelancer, 2 anos trabalhando com aplicativos em Android e mais de 2 anos como Full Stack em diferentes linguagens e frameworks.<br><br>Especialidades: Vue, Quasar, .Net Core, NodeJS, MongoDB, MySQL e SQL Server.'

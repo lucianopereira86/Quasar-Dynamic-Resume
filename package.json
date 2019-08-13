@@ -14,6 +14,7 @@
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
     "highcharts": "^7.1.2",
+    "jquery": "^3.4.1",
     "mime-types": "^2.1.24",
     "quasar": "^1.0.0"
   },

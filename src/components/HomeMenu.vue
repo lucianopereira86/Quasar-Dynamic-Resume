@@ -3,7 +3,7 @@
     <div id="my-container" class="absolute-center"></div>
     <div class="absolute-center">
       <q-avatar size="200px">
-        <q-img :src="LANG.home.image"/>
+        <q-img :src="LANG.home.image" />
       </q-avatar>
       <BtnMenu
         :offset="[50, -190]"
@@ -21,7 +21,7 @@
       />
       <BtnMenu
         :offset="[60, 110]"
-        icon="fab fa-github"
+        icon="fab fa-git-alt"
         :text="LANG.labels.menu.portfolio"
         clickable
         @click.native="openDrawer(2)"
@@ -48,17 +48,35 @@
         @click.native="openDrawer(5)"
       />
     </div>
+    <DrawerAwards ref="DrawerAwards" :LANG="LANG" />
+    <DrawerEducation ref="DrawerEducation" :LANG="LANG" />
+    <DrawerPortfolio ref="DrawerPortfolio" :LANG="LANG" />
+    <DrawerCoding ref="DrawerCoding" :LANG="LANG" />
+    <DrawerProfile ref="DrawerProfile" :LANG="LANG" />
+    <DrawerJobs ref="DrawerJobs" :LANG="LANG" />
   </div>
 </template>
 
 <script>
 import BtnMenu from './BtnMenu'
+import DrawerAwards from './DrawerAwards'
+import DrawerEducation from './DrawerEducation'
+import DrawerPortfolio from './DrawerPortfolio'
+import DrawerCoding from './DrawerCoding'
+import DrawerProfile from './DrawerProfile'
+import DrawerJobs from './DrawerJobs'
 export default {
   props: {
     LANG: Object
   },
   components: {
-    BtnMenu
+    BtnMenu,
+    DrawerAwards,
+    DrawerEducation,
+    DrawerPortfolio,
+    DrawerCoding,
+    DrawerProfile,
+    DrawerJobs
   },
   data () {
     return {

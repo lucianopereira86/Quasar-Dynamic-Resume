@@ -1,26 +1,33 @@
 <template>
-      <q-list style="overflow-y:auto;max-height:70vh">
-        <q-item-label header class="text-right">
-          <q-icon name="fas fa-paperclip" size="20px" class="q-mb-sm"/>
-          <span class="text-h6 q-ml-sm">{{LANG.labels.home.files}}</span>
-        </q-item-label>
-        <q-item
-          v-for="(file, index) in files"
-          :key="index"
-          class="q-mb-lg text-left"
-          clickable
-          @click.native="download(file)"
-        >
-          <q-item-section avatar>
-            <q-avatar>
-              <q-icon :name="getIcon(file)" :color="getColorIcon(file)"/>
-            </q-avatar>
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>{{file.title}}</q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-list>
+  <q-list style="overflow-y:auto;max-height:70vh">
+    <q-item-label header class="text-right">
+      <q-icon name="fas fa-paperclip" size="20px" class="q-mb-sm" />
+      <span class="text-h6 q-ml-sm">{{LANG.labels.home.files}}</span>
+    </q-item-label>
+    <q-item
+      v-for="(file, index) in files"
+      :key="index"
+      class="q-mb-lg text-left"
+      clickable
+      @click.native="download(file, index)"
+    >
+      <q-item-section avatar>
+        <q-avatar>
+          <q-icon :name="getIcon(file)" :color="getColorIcon(file)" />
+        </q-avatar>
+      </q-item-section>
+      <q-item-section>
+        <q-item-label>{{file.title}}</q-item-label>
+        <q-item-label caption>{{file.filename}}</q-item-label>
+      </q-item-section>
+      <a
+        :id="`id_${index}`"
+        style="visibility: hidden"
+        :href="file.url"
+        target="_blank"
+      >{{file.filename}}</a>
+    </q-item>
+  </q-list>
 </template>
 
 <script>
@@ -30,7 +37,9 @@ export default {
   },
   data () {
     return {
-      files: []
+      files: [],
+      showPDF: false,
+      pdfURL: ''
     }
   },
   mounted () {
@@ -59,24 +68,33 @@ export default {
       else if (mimeType.includes('powerpoint')) { return 'accent' } else if (mimeType.includes('excel')) return 'positive'
       else return 'grey'
     },
-    download (file) {
-      let url = `../statics/files/${file.filename}`
+    download (file, index) {
       const self = this
-      self.$q.loading.show()
-      fetch(url)
-        .then(res => res.blob())
-        .then(blob => {
-          console.log('blob', blob)
-          let anchor = document.createElement('a')
-          anchor.href = window.URL.createObjectURL(blob)
-          anchor.download = file.filename
-          anchor.click()
-          self.$q.loading.hide()
-        })
-        .catch(err => {
-          console.error('downloadImageFromURL', err)
-          self.$q.loading.hide()
-        })
+      if (file.url) {
+        window.$(`#id_${index}`).prop('href', file.url).prop('download', file.filename)[0].click()
+      } else {
+        let url = file.url || `../statics/files/${file.filename}`
+        fetch(url)
+          .then(res => res.blob())
+          .then(blob => {
+            console.log('blob', blob)
+            // let anchor = document.createElement('a')
+            // anchor.href = window.URL.createObjectURL(blob)
+            // anchor.download = file.filename
+            // anchor.click()
+            let url = window.URL.createObjectURL(blob)
+            self.createAnchorToDownloadFile(file.filename, url)
+          })
+          .catch(err => {
+            console.error('downloadImageFromURL', err)
+          })
+      }
+    },
+    createAnchorToDownloadFile (filename, url) {
+      let anchor = document.createElement('a')
+      anchor.href = url
+      anchor.download = filename
+      anchor.click()
     }
   }
 }

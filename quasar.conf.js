@@ -4,7 +4,7 @@ module.exports = function (ctx) {
   return {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
-    boot: ['axios', 'highcharts', 'lang', 'mimetypes'],
+    boot: ['axios', 'highcharts', 'jquery', 'lang', 'mimetypes'],
 
     css: ['app.styl'],
 
@@ -48,12 +48,14 @@ module.exports = function (ctx) {
         'QCardSection',
         'QRating',
         'QToggle',
+        'QTabs',
+        'QTab',
         'QTabPanels',
         'QTabPanel',
         'QSeparator'
       ],
 
-      directives: ['Ripple'],
+      directives: ['Ripple', 'ClosePopup'],
 
       // Quasar plugins
       plugins: ['Notify', 'Loading']

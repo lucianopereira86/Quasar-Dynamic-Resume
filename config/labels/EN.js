@@ -20,6 +20,8 @@ export default {
     jobs: 'Professional History',
     languages: 'LANGUAGES',
     reposFound: 'Repositories Found',
-    articles: 'Articles'
+    articles: 'Articles',
+    titleBgColor: 'bg-accent',
+    titleTextColor: 'text-white'
   }
 }
