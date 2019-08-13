@@ -44,11 +44,6 @@ export default {
   ],
   files: [
     {
-      title: 'Curriculum Vitae',
-      filename: 'curriculo.pdf',
-      url: 'https://drive.google.com/open?id=16Av5FXbRxQWwq_Kw9zq8KZ7uIrEVvZ0P'
-    },
-    {
       title: 'Bachelor Degree in Computer Engineering',
       filename: 'diploma.jpeg'
     }

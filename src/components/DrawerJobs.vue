@@ -23,8 +23,8 @@
                     <q-item-label caption>{{job.description}}</q-item-label>
                     <q-item-label>
                       <div class="row q-mt-sm">
-                        <div class="col-2" v-for="(tech, index2) in job.techs" :key="index2">
-                          <q-avatar :title="tech.title" size="30px">
+                        <div class="col-3 q-py-xs" v-for="(tech, index2) in job.techs" :key="index2">
+                          <q-avatar :title="tech.title" size="35px">
                             <q-img :src="tech.image" />
                           </q-avatar>
                         </div>

@@ -1,6 +1,6 @@
 export default {
   home: {
-    preferences: 'Preferências',
+    preferences: 'Especialidades',
     files: 'Arquivos'
   },
   menu: {

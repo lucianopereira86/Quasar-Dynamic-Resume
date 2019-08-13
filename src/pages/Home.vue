@@ -1,5 +1,5 @@
 <template>
-  <q-page class="relative-position">
+  <q-page id="home" class="relative-position">
     <div class="row">
       <div class="col-3">
         <HomePreferences :LANG="LANG" />

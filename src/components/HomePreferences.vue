@@ -1,12 +1,12 @@
 <template>
   <!-- <q-card class="full-width full-height" style="overflow-y:auto;max-height:70vh">
     <q-card-section> -->
-      <q-list>
-        <q-item-label header class="text-left">
+      <q-list  class="text-left bg-white">
+        <q-item-label header>
           <q-icon name="fas fa-star" size="20px" class="q-mb-sm"/>
           <span class="text-h6 q-ml-md">{{LANG.labels.home.preferences}}</span>
         </q-item-label>
-        <q-item v-for="(pref, index) in getPrefs()" :key="index" class="q-mb-lg">
+        <q-item v-for="(pref, index) in getPrefs()" :key="index">
           <q-item-section avatar>
             <q-avatar>
               <q-img :src="pref.image"/>

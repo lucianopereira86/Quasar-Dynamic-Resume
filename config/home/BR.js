@@ -44,11 +44,6 @@ export default {
   ],
   files: [
     {
-      title: 'Curriculum Vitae',
-      filename: 'curriculo.pdf',
-      url: 'https://drive.google.com/open?id=16Av5FXbRxQWwq_Kw9zq8KZ7uIrEVvZ0P'
-    },
-    {
       title: 'Diploma de Bacharel em Engenharia da Computação',
       filename: 'diploma.jpeg'
     }

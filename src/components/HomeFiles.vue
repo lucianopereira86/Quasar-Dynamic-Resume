@@ -1,6 +1,6 @@
 <template>
   <q-list style="overflow-y:auto;max-height:70vh">
-    <q-item-label header class="text-right">
+    <q-item-label header class="text-left">
       <q-icon name="fas fa-paperclip" size="20px" class="q-mb-sm" />
       <span class="text-h6 q-ml-sm">{{LANG.labels.home.files}}</span>
     </q-item-label>
