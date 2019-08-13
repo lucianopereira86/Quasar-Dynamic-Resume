@@ -1,5 +1,5 @@
 <template>
-  <q-toolbar :class="[LANG.labels.drawer.titleBgColor, LANG.labels.drawer.titleTextColor]">
+  <q-toolbar :style="{ backgroundColor: LANG.labels.drawer.titleBgColor }" :class="[LANG.labels.drawer.titleTextColor]">
     <div class="row full-width items-center">
       <div class="col-1 text-center">
         <q-icon :name="icon" size="25px" />

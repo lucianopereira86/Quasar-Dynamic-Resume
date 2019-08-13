@@ -4,7 +4,7 @@
       <DrawerTitle icon="fas fa-graduation-cap" :text="LANG.labels.drawer.education" :LANG="LANG" />
       <q-card class="full-width full-height" style="overflow-y:auto;max-height:80vh">
         <q-card-section>
-          <q-list v-for="(school, index) in LANG.education.schools" :key="index" class="q-mb-lg">
+          <q-list v-for="(school, index) in LANG.education.schools" :key="index">
             <q-item-label header class="text-center">
               <q-img :src="school.image" style="max-height:10vh;max-width:20vw" />
             </q-item-label>
@@ -15,8 +15,8 @@
                 <q-item-label caption>{{school.period}}</q-item-label>
               </q-item-section>
             </q-item>
+            <q-separator class="q-my-sm"/>
           </q-list>
-          <q-separator />
           <q-list class="row">
             <q-item-label header class="col-12 text-left">
               <span class="text-h6">{{LANG.labels.drawer.languages}}</span>

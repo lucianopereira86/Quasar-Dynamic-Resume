@@ -21,7 +21,7 @@ export default {
     languages: 'LANGUAGES',
     reposFound: 'Repositories Found',
     articles: 'Articles',
-    titleBgColor: 'bg-accent',
+    titleBgColor: '#9C27B0',
     titleTextColor: 'text-white'
   }
 }

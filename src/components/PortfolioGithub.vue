@@ -18,13 +18,14 @@
             </q-item-label>
           </q-item-section>
         </q-item>
-        <q-item v-else v-for="(repo, index) in repos" :key="index" class="q-mb-lg">
+        <q-item v-else v-for="(repo, index) in repos" :key="index">
           <q-item-section>
             <q-item-label class="text-subtitle1 text-bold">{{repo.name}}</q-item-label>
             <q-item-label>
               <a :href="repo.html_url" target="_blank">{{repo.html_url}}</a>
             </q-item-label>
             <q-item-label caption>{{repo.description}}</q-item-label>
+            <q-item-label ><q-separator class="q-my-sm"/></q-item-label>
           </q-item-section>
         </q-item>
       </q-list>

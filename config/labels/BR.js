@@ -21,7 +21,7 @@ export default {
     languages: 'IDIOMAS',
     reposFound: 'Repositórios Encontrados',
     articles: 'Artigos',
-    titleBgColor: 'bg-accent',
+    titleBgColor: '#9C27B0',
     titleTextColor: 'text-white'
   }
 }

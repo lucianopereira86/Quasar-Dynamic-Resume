@@ -10,13 +10,18 @@
                 <q-item-label header class="text-center">
                   <span class="text-h6">{{jobs.type}}</span>
                 </q-item-label>
-                <q-item v-for="(job, index) in jobs.jobs" :key="index" class="q-mb-lg">
-                  <q-item-section avatar>
+                <q-item v-for="(job, index) in jobs.jobs" :key="index">
+                  <!-- <q-item-section avatar>
                     <q-avatar>
                       <q-img :src="job.image" />
                     </q-avatar>
-                  </q-item-section>
+                  </q-item-section> -->
                   <q-item-section>
+                    <div class="full-width text-center">
+                    <q-img :src="job.image" :title="job.company" style="max-height:8vh;max-width:8vw" class="q-mb-md"/>
+                    </div>
+                  <!-- </q-item-section>
+                  <q-item-section> -->
                     <q-item-label class="text-subtitle1 text-bold">{{job.function}}</q-item-label>
                     <q-item-label>{{job.company}}</q-item-label>
                     <q-item-label caption>{{job.period}}</q-item-label>
@@ -29,6 +34,7 @@
                           </q-avatar>
                         </div>
                       </div>
+                      <q-separator class="q-my-sm"/>
                     </q-item-label>
                   </q-item-section>
                 </q-item>

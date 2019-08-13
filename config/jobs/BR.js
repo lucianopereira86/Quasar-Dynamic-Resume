@@ -1,6 +1,6 @@
 export default [
   {
-    type: 'PERÍODO INTEGRAL',
+    type: 'FUNCIONÁRIO',
     jobs: [
       {
         image: 'http://w3as.com.br/dist/img/w3_icon3.png',

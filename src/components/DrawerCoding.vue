@@ -5,15 +5,15 @@
       <q-card class="full-width full-height" style="overflow-y:auto;max-height:80vh">
         <q-card-section>
           <div class="row">
-            <div class="col" v-for="(coding, index) in LANG.coding" :key="index">
+            <div class="col border-col" v-for="(coding, index) in LANG.coding" :key="index">
               <q-list>
                 <q-item-label header class="text-center">
                   <span class="text-h6">{{coding.type}}</span>
                 </q-item-label>
-                <q-item v-for="(tech, index) in getTechs(coding)" :key="index" class="q-mb-lg">
+                <q-item v-for="(tech, index) in getTechs(coding)" :key="index" :class="index === 0? 'q-mb-lg':'q-mb-sm'">
                   <q-item-section avatar>
-                    <q-avatar>
-                      <q-img :src="tech.image" />
+                    <q-avatar  :size="index > 0? '30px':''">
+                      <q-img :src="tech.image"/>
                     </q-avatar>
                   </q-item-section>
                   <q-item-section>
@@ -21,15 +21,6 @@
                       :class="{ 'text-bold': index === 0 }"
                       class="text-subtitle1"
                     >{{tech.name}}</q-item-label>
-                    <!-- <q-item-label>
-                      <q-rating
-                        v-model="tech.rating"
-                        size="1.5em"
-                        icon="star"
-                        :color="getColor(tech.rating)"
-                        readonly
-                      />
-                    </q-item-label>-->
                   </q-item-section>
                 </q-item>
               </q-list>
@@ -69,5 +60,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.border-col {
+  padding-right: 1px !important;
+}
 </style>

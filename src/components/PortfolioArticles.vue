@@ -13,6 +13,7 @@
             <q-item-label>
               <a :href="site.url" target="_blank">{{site.url}}</a>
             </q-item-label>
+            <q-item-label ><q-separator class="q-my-sm"/></q-item-label>
           </q-item-section>
         </q-item>
       </q-list>

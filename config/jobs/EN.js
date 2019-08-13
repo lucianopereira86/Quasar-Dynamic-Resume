@@ -1,6 +1,6 @@
 export default [
   {
-    type: 'FULL TIME',
+    type: 'EMPLOYEE',
     jobs: [
       {
         image: 'http://w3as.com.br/dist/img/w3_icon3.png',

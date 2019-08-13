@@ -16,6 +16,7 @@
                 <q-item-label caption>{{award.description}}</q-item-label>
               </q-item-section>
             </q-item>
+            <q-separator class="q-my-sm"/>
           </q-list>
         </q-card-section>
       </q-card>
