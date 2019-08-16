@@ -116,5 +116,6 @@ It's shown by the "Profile" button and contains the photo, name, birthday, phone
 
 ## Conclusion
 
-If you were thinking about creating a website but didnt want to waste too much time programming and designing one, I hope you use this project and share your dynamic resumé it with us.
+If you were thinking about creating a website but didn't want to waste too much time programming and designing one, I hope you use this project and share your dynamic resumé it with us.
+
 Until next time!
