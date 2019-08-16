@@ -1,33 +1,120 @@
 # Quasar Dynamic Resumé (quasar-dynamic-resume)
 
-Quasar Dynamic Resumé
+Dynamic multi-language resumé developed with Quasar.
 
-## Install the dependencies
+## Technologies
+
+- Quasar v1.0
+- Highcharts.js
+
+## Objective
+
+In this project you will be able to build a dynamic resumé to show your profile, professional history, education background, events, awards, programming knowledge, portfolio projects and articles. Also it will be possible to share files from the project or from external links.
+There's a demo hosted at [Surge](http://lucianopereira.surge.sh/#/).
+
+## How It Works
+
+The "<ROOT>/config" folder contains the dynamic data from each module in both available languages: brazilian portuguese (BR) and english (EN).
+
+![code01](/docs/code01.JPG)
+
+- The "<ROOT>/lang.js" file creates an object containing all the data from the "<ROOT>/config" folder.
+
+![code02](/docs/code02.JPG)
+
+- The method "set" from the "<ROOT>/src/boot/lang.js" plugin saves the selected language in the "localStorage" and uses the "<ROOT>/lang.js" file to return an object.
+
+![code03](/docs/code03.JPG)
+
+- The mutation "SET_LANG" from the "<ROOT>/src/store/general/mutations.js" file updates the "LANG" state with the object returned by the plugin.
+
+![code04](/docs/code04.JPG)
+
+- The "LANG" state's attributes are responsible for showing the dynamic data in the website. Their values are located inside the "<ROOT>/config" folder. For example, in the "<ROOT>/src/components/DrawerAwards.vue" component:
+
+![code05](/docs/code05.JPG)
+
+- The "LANG.labels.drawer.awards" variable's value is located at:
+
+![code06](/docs/code06.JPG)
+
+## How to run this project
+
+Install the dependencies
 
 ```bash
 npm install
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+Run the app
 
 ```bash
 quasar dev
 ```
 
-### Lint the files
+The main screen shows a navigation bar and a circular menu with two lists in both sides.
 
-```bash
-npm run lint
-```
+![quasar01](/docs/quasar01.JPG)
 
-### Build the app for production
+The navigation bar contains the title, a message and the language toggle.
 
-```bash
-quasar build
-```
+![quasar02](/docs/quasar02.JPG)
 
-### Customize the configuration
+The circular menu contains the options: Professional, Awards, Education, Portfolio, Coding and Profile. The Highcharts plugin is responsible for the hover effect over the buttons.
 
-See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
+![quasar03](/docs/quasar03.JPG)
 
-## References
+The left list shows the user's most experienced technologies.
+
+![quasar04](/docs/quasar04.JPG)
+
+The left list shows the shared files.
+
+![quasar05](/docs/quasar05.JPG)
+
+Each menu option shows a window containing their respective data and structure.
+
+### Professional History
+
+It's shown by the "Professional" button and contains one list for both job types: EMPLOYEE and FREELANCER.
+Each one contains the company's logo, employee's function, company's name, period, job description and used technologies.
+
+![quasar06](/docs/quasar06.JPG)
+
+### Events and Awards
+
+It's shown by the "Awards" button and contains one list with the event's banner, exercised function, location, period and description.
+
+![quasar07](/docs/quasar07.JPG)
+
+### Education Background
+
+It's shown by the "Education" button and contains one list with the school's banner, educational degree, school's name and period. In the bottom, the languages spoken by the website's owner are listed with a word describing his/her level of knowledge.
+
+![quasar08](/docs/quasar08.JPG)
+
+### Portfolio
+
+It's shown by the "Portfolio" button and is composed by two tabs: GitHub and Articles. In the "GitHub" tab, the owner's "Sourcerer.io" profile link can be shared above the list of repositories which is downloaded in real time, showing their title, URL and description.
+
+![quasar09_1](/docs/quasar09_1.JPG)
+
+The "Articles" tab groups the articles by their website.
+
+![quasar09_2](/docs/quasar09_2.JPG)
+
+### Coding
+
+It's shown by the "Coding" button and has one list for each technology layer (front-end, back-end, etc) containing technologies ordered by descending knowledge level, highlighting the first positions.
+
+![quasar10](/docs/quasar10.JPG)
+
+### Profile
+
+It's shown by the "Profile" button and contains the website's owner photo, name, birthday, phone number, email, location, Whatsapp, LinkedIn, Skype and a summary text.
+
+![quasar11](/docs/quasar11.JPG)
+
+## Conclusion
+
+If you were thinking about creating a website but didnt want to waste to much time programming and designing, I hope you use this project to show your resumé dinamically and share it with us.
