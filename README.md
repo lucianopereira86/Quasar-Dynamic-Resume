@@ -14,27 +14,27 @@ There's a demo hosted at [Surge](http://lucianopereira.surge.sh/#/).
 
 ## How It Works
 
-The "<ROOT>/config" folder contains the dynamic data from each module in both available languages: brazilian portuguese (BR) and english (EN).
+The "/config" folder contains the dynamic data from each module in both available languages: brazilian portuguese (BR) and english (EN).
 
 ![code01](/docs/code01.JPG)
 
-- The "<ROOT>/lang.js" file creates an object containing all the data from the "<ROOT>/config" folder.
+The "/lang.js" file creates an object containing all the data from the "/config" folder.
 
 ![code02](/docs/code02.JPG)
 
-- The method "set" from the "<ROOT>/src/boot/lang.js" plugin saves the selected language in the "localStorage" and uses the "<ROOT>/lang.js" file to return an object.
+The method "set" from the "/src/boot/lang.js" plugin saves the selected language in the "localStorage" and uses the "/lang.js" file to return an object.
 
 ![code03](/docs/code03.JPG)
 
-- The mutation "SET_LANG" from the "<ROOT>/src/store/general/mutations.js" file updates the "LANG" state with the object returned by the plugin.
+The mutation "SET_LANG" from the "/src/store/general/mutations.js" file updates the "LANG" state with the object returned by the plugin.
 
 ![code04](/docs/code04.JPG)
 
-- The "LANG" state's attributes are responsible for showing the dynamic data in the website. Their values are located inside the "<ROOT>/config" folder. For example, in the "<ROOT>/src/components/DrawerAwards.vue" component:
+The "LANG" state's attributes are responsible for showing the dynamic data in the website. Their values are located inside the "/config" folder. For example, in the "/src/components/DrawerAwards.vue" component:
 
 ![code05](/docs/code05.JPG)
 
-- The "LANG.labels.drawer.awards" variable's value is located at:
+The "LANG.labels.drawer.awards" variable's value is located at:
 
 ![code06](/docs/code06.JPG)
 
