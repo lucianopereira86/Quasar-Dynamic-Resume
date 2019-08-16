@@ -61,6 +61,7 @@ The navigation bar contains the title, a message and the language toggle.
 ![quasar02](/docs/quasar02.JPG)
 
 The circular menu contains the options: Professional, Awards, Education, Portfolio, Coding and Profile. The Highcharts plugin is responsible for the hover effect over the buttons.
+Each menu option shows a window containing their respective data and structure.
 
 ![quasar03](/docs/quasar03.JPG)
 
@@ -68,11 +69,9 @@ The left list shows the user's most experienced technologies.
 
 ![quasar04](/docs/quasar04.JPG)
 
-The left list shows the shared files.
+The right list shows the shared files.
 
 ![quasar05](/docs/quasar05.JPG)
-
-Each menu option shows a window containing their respective data and structure.
 
 ### Professional History
 
@@ -95,7 +94,7 @@ It's shown by the "Education" button and contains one list with the school's ban
 
 ### Portfolio
 
-It's shown by the "Portfolio" button and is composed by two tabs: GitHub and Articles. In the "GitHub" tab, the owner's "Sourcerer.io" profile link can be shared above the list of repositories which is downloaded in real time, showing their title, URL and description.
+It's shown by the "Portfolio" button and is composed by two tabs: GitHub and Articles. In the "GitHub" tab, the owner's "Sourcerer.io" profile link can be shared above the list of repositories downloaded in real time.
 
 ![quasar09_1](/docs/quasar09_1.JPG)
 
@@ -105,16 +104,17 @@ The "Articles" tab groups the articles by their website.
 
 ### Coding
 
-It's shown by the "Coding" button and has one list for each technology layer (front-end, back-end, etc) containing technologies ordered by descending knowledge level, highlighting the first positions.
+It's shown by the "Coding" button and has one list for each technology layer (front-end, back-end, etc) containing technologies ordered by descending level of knowledge. The first positions are highlighted.
 
 ![quasar10](/docs/quasar10.JPG)
 
 ### Profile
 
-It's shown by the "Profile" button and contains the website's owner photo, name, birthday, phone number, email, location, Whatsapp, LinkedIn, Skype and a summary text.
+It's shown by the "Profile" button and contains the photo, name, birthday, phone number, e-mail, location, Whatsapp number, LinkedIn profile, Skype e-mail and summary text.
 
 ![quasar11](/docs/quasar11.JPG)
 
 ## Conclusion
 
-If you were thinking about creating a website but didnt want to waste to much time programming and designing, I hope you use this project to show your resumé dinamically and share it with us.
+If you were thinking about creating a website but didnt want to waste too much time programming and designing one, I hope you use this project and share your dynamic resumé it with us.
+Until next time!
