@@ -60,11 +60,6 @@ The navigation bar contains the title, a message and the language toggle.
 
 ![quasar02](/docs/quasar02.JPG)
 
-The circular menu contains the options: Professional, Awards, Education, Portfolio, Coding and Profile. The Highcharts plugin is responsible for the hover effect over the buttons.
-Each menu option shows a window containing their respective data and structure.
-
-![quasar03](/docs/quasar03.JPG)
-
 The left list shows the user's most experienced technologies.
 
 ![quasar04](/docs/quasar04.JPG)
@@ -73,44 +68,34 @@ The right list shows the shared files.
 
 ![quasar05](/docs/quasar05.JPG)
 
-### Professional History
+The circular menu contains the options: Professional, Awards, Education, Portfolio, Coding and Profile. The Highcharts plugin is responsible for the hover effect over the buttons.
+Each menu option shows a window containing their respective data and structure.
 
-It's shown by the "Professional" button and contains one list for both job types: EMPLOYEE and FREELANCER.
-Each one contains the company's logo, employee's function, company's name, period, job description and used technologies.
+![quasar03](/docs/quasar03.JPG)
+
+### Professional History
 
 ![quasar06](/docs/quasar06.JPG)
 
 ### Events and Awards
 
-It's shown by the "Awards" button and contains one list with the event's banner, exercised function, location, period and description.
-
 ![quasar07](/docs/quasar07.JPG)
 
 ### Education Background
-
-It's shown by the "Education" button and contains one list with the school's banner, educational degree, school's name and period. In the bottom, the languages spoken by the website's owner are listed with a word describing his/her level of knowledge.
 
 ![quasar08](/docs/quasar08.JPG)
 
 ### Portfolio
 
-It's shown by the "Portfolio" button and is composed by two tabs: GitHub and Articles. In the "GitHub" tab, the owner's "Sourcerer.io" profile link can be shared above the list of repositories downloaded in real time.
-
 ![quasar09_1](/docs/quasar09_1.JPG)
-
-The "Articles" tab groups the articles by their website.
 
 ![quasar09_2](/docs/quasar09_2.JPG)
 
 ### Coding
 
-It's shown by the "Coding" button and has one list for each technology layer (front-end, back-end, etc) containing technologies ordered by descending level of knowledge. The first positions are highlighted.
-
 ![quasar10](/docs/quasar10.JPG)
 
 ### Profile
-
-It's shown by the "Profile" button and contains the photo, name, birthday, phone number, e-mail, location, Whatsapp number, LinkedIn profile, Skype e-mail and summary text.
 
 ![quasar11](/docs/quasar11.JPG)
 
