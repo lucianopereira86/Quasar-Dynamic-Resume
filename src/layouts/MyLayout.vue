@@ -3,7 +3,7 @@
     <q-header elevated>
       <q-toolbar class="row">
         <q-toolbar-title class="col-8 offset-2 text-h2 text-center q-pa-md">{{LANG.home.title}}</q-toolbar-title>
-        <div class="col-2 text-right">
+        <div class="col-2 text-right" v-if="showSwitch()">
           <q-avatar @click="selectLang(false)" class="cursor-pointer">
             <q-img :src="LANG.home.flag.BR" />
           </q-avatar>
@@ -43,6 +43,9 @@ export default {
       this.isEN = isEN
       let language = isEN ? 'EN' : 'BR'
       this.SET_LANG(language)
+    },
+    showSwitch () {
+      return this.$LANG.dashboard.languages.switch.value
     }
   }
 }

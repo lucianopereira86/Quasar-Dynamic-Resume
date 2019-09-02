@@ -68,6 +68,27 @@ export default {
       // console.log('$fs', this.$fs)
       // let text = `export default { ${this.langSwitch} }`
       // this.$fs.writeFileSync('../../teste.js', text)
+      // this.$axios({
+      //   url: '/statics/teste.txt',
+      //   method: 'GET'
+      // })
+      //   .then(result => {
+      //     console.log('result', result)
+      //   })
+      //   .catch(err => {
+      //     console.log(err)
+      //   })
+      this.$axios({
+        url: '/statics/teste.txt',
+        method: 'POST',
+        data: 'teste2'
+      })
+        .then(result => {
+          console.log('result', result)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   }
 }
