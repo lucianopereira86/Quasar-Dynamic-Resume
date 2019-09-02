@@ -22,6 +22,6 @@ export default {
     reposFound: 'Repositórios Encontrados',
     articles: 'Artigos',
     titleBgColor: '#9C27B0',
-    titleTextColor: 'text-white'
+    titleTextColor: '#fff'
   }
 }

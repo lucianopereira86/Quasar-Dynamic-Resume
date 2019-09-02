@@ -52,7 +52,11 @@ module.exports = function (ctx) {
         'QTab',
         'QTabPanels',
         'QTabPanel',
-        'QSeparator'
+        'QSeparator',
+        'QInput',
+        'QColor',
+        'QExpansionItem',
+        'QRadio'
       ],
 
       directives: ['Ripple', 'ClosePopup'],

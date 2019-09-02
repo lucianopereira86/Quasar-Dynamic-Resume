@@ -9,7 +9,7 @@ export default {
       'https://cdn3.iconfinder.com/data/icons/50-flags-of-the-world-circular-shape-2/60/Circular_world_Flag_145-512.png'
   },
   navBgColor: 'bg-primary',
-  navTextColor: 'text-white',
+  navTextColor: '#fff',
   menuBgColor: '#9C27B0',
   preferences: [
     {

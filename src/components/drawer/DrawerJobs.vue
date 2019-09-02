@@ -11,30 +11,32 @@
                   <span class="text-h6">{{jobs.type}}</span>
                 </q-item-label>
                 <q-item v-for="(job, index) in jobs.jobs" :key="index">
-                  <!-- <q-item-section avatar>
-                    <q-avatar>
-                      <q-img :src="job.image" />
-                    </q-avatar>
-                  </q-item-section> -->
                   <q-item-section>
                     <div class="full-width text-center">
-                    <q-img :src="job.image" :title="job.company" style="max-height:8vh;max-width:8vw" class="q-mb-md"/>
+                      <q-img
+                        :src="job.image"
+                        :title="job.company"
+                        style="max-height:8vh;max-width:8vw"
+                        class="q-mb-md"
+                      />
                     </div>
-                  <!-- </q-item-section>
-                  <q-item-section> -->
                     <q-item-label class="text-subtitle1 text-bold">{{job.function}}</q-item-label>
                     <q-item-label>{{job.company}}</q-item-label>
                     <q-item-label caption>{{job.period}}</q-item-label>
                     <q-item-label caption>{{job.description}}</q-item-label>
                     <q-item-label>
                       <div class="row q-mt-sm">
-                        <div class="col-3 q-py-xs" v-for="(tech, index2) in job.techs" :key="index2">
+                        <div
+                          class="col-3 q-py-xs"
+                          v-for="(tech, index2) in job.techs"
+                          :key="index2"
+                        >
                           <q-avatar :title="tech.title" size="35px">
                             <q-img :src="tech.image" />
                           </q-avatar>
                         </div>
                       </div>
-                      <q-separator class="q-my-sm"/>
+                      <q-separator class="q-my-sm" />
                     </q-item-label>
                   </q-item-section>
                 </q-item>

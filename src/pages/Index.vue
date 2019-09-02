@@ -1,6 +1,9 @@
 <template>
-  <div>
+  <q-page class="relative-position">
     <div id="my-container" class="absolute-center"></div>
+    <div class="absolute-top text-center text-grey text-h5 q-mt-lg">
+      <cite>"{{LANG.home.message}}"</cite>
+    </div>
     <div class="absolute-center">
       <q-avatar size="200px">
         <q-img :src="LANG.home.image" />
@@ -21,7 +24,7 @@
       />
       <BtnMenu
         :offset="[60, 110]"
-        icon="fab fa-git-alt"
+        icon="fab fa-github"
         :text="LANG.labels.menu.portfolio"
         clickable
         @click.native="openDrawer(2)"
@@ -54,21 +57,20 @@
     <DrawerCoding ref="DrawerCoding" :LANG="LANG" />
     <DrawerProfile ref="DrawerProfile" :LANG="LANG" />
     <DrawerJobs ref="DrawerJobs" :LANG="LANG" />
-  </div>
+  </q-page>
 </template>
 
 <script>
-import BtnMenu from './BtnMenu'
-import DrawerAwards from './DrawerAwards'
-import DrawerEducation from './DrawerEducation'
-import DrawerPortfolio from './DrawerPortfolio'
-import DrawerCoding from './DrawerCoding'
-import DrawerProfile from './DrawerProfile'
-import DrawerJobs from './DrawerJobs'
+import { mapState } from 'vuex'
+import BtnMenu from '../components/home/BtnMenu'
+import DrawerAwards from '../components/drawer/DrawerAwards'
+import DrawerEducation from '../components/drawer/DrawerEducation'
+import DrawerPortfolio from '../components/drawer/DrawerPortfolio'
+import DrawerCoding from '../components/drawer/DrawerCoding'
+import DrawerProfile from '../components/drawer/DrawerProfile'
+import DrawerJobs from '../components/drawer/DrawerJobs'
 export default {
-  props: {
-    LANG: Object
-  },
+  name: 'PageIndex',
   components: {
     BtnMenu,
     DrawerAwards,
@@ -81,32 +83,29 @@ export default {
   data () {
     return {
       chart: null,
-      arrayDrawer: []
+      arrayDrawer: [],
+      color: '#9c27b0'
     }
   },
+  computed: {
+    ...mapState('General', ['LANG'])
+  },
   mounted () {
-    this.arrayDrawer = [
-      {
-        name: 'Awards'
-      },
-      {
-        name: 'Education'
-      },
-      {
-        name: 'Portfolio'
-      },
-      {
-        name: 'Coding'
-      },
-      {
-        name: 'Profile'
-      },
-      {
-        name: 'Jobs'
-      }
-    ]
+    this.arrayDrawer = [{
+      name: 'Awards'
+    }, {
+      name: 'Education'
+    }, {
+      name: 'Portfolio'
+    }, {
+      name: 'Coding'
+    }, {
+      name: 'Profile'
+    }, {
+      name: 'Jobs'
+    }]
     this.$Highcharts.setOptions({
-      colors: [this.LANG.home.menuBgColor]
+      colors: [this.color]
     })
 
     this.RenderPieChart('my-container', [
@@ -164,20 +163,17 @@ export default {
             type: 'pie',
             name: 'Browser share',
             data: dataList
-          }
-        ]
+          }]
       })
     },
     openDrawer (index, isColumnClick) {
       let drawer = this.arrayDrawer[index]
-      if (!isColumnClick) {
-        this.chart.series[0].data[index].firePointEvent('click')
-      }
+      if (!isColumnClick) { this.chart.series[0].data[index].firePointEvent('click') }
       this.$refs[`Drawer${drawer.name}`].open()
     }
   }
 }
 </script>
 
-<style>
+<style scoped>
 </style>

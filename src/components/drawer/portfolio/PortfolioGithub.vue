@@ -4,7 +4,10 @@
       <div class="row items-center">
         <div class="col-2 text-bold text-subtitle1 q-ml-md">Sourcerer.io:</div>
         <div class="col">
-          <a :href="LANG.portfolio.sourcererIO" target="_blank">{{LANG.portfolio.sourcererIO}}</a>
+          <a
+            :href="LANG.portfolio['sourcerer.io']"
+            target="_blank"
+          >{{LANG.portfolio['sourcerer.io'].url}}</a>
         </div>
       </div>
       <q-list>
@@ -25,7 +28,9 @@
               <a :href="repo.html_url" target="_blank">{{repo.html_url}}</a>
             </q-item-label>
             <q-item-label caption>{{repo.description}}</q-item-label>
-            <q-item-label ><q-separator class="q-my-sm"/></q-item-label>
+            <q-item-label>
+              <q-separator class="q-my-sm" />
+            </q-item-label>
           </q-item-section>
         </q-item>
       </q-list>

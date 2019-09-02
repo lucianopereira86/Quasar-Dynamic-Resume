@@ -1,4 +1,5 @@
 var folders = [
+  'dashboard',
   'labels',
   'home',
   'profile',

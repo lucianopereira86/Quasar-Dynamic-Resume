@@ -3,7 +3,11 @@ export default async ({ Vue }) => {
   Vue.prototype.$LANG = {
     set: function (language) {
       localStorage.setItem('language', language)
+      return this.get(language)
+    },
+    get: function (language) {
       let lang = {}
+      lang.dashboard = LANG[`dashboard${language}`]
       lang.labels = LANG[`labels${language}`]
       lang.home = LANG[`home${language}`]
       lang.profile = LANG[`profile${language}`]

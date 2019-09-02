@@ -15,7 +15,7 @@
                 <q-item-label caption>{{school.period}}</q-item-label>
               </q-item-section>
             </q-item>
-            <q-separator class="q-my-sm"/>
+            <q-separator class="q-my-sm" />
           </q-list>
           <q-list class="row">
             <q-item-label header class="col-12 text-left">
@@ -29,16 +29,7 @@
               </q-item-section>
               <q-item-section>
                 <q-item-label class="text-subtitle1 text-bold">{{language.name}}</q-item-label>
-                <q-item-label>
-                  {{language.level}}
-                  <!-- <q-rating
-                    v-model="language.rating"
-                    size="1.5em"
-                    icon="star"
-                    :color="getColor(language.rating)"
-                    readonly
-                  />-->
-                </q-item-label>
+                <q-item-label>{{language.level}}</q-item-label>
               </q-item-section>
             </q-item>
           </q-list>
@@ -49,7 +40,7 @@
 </template>
 
 <script>
-import GeneralMixins from '../mixins/general.mixins'
+import GeneralMixins from '../../mixins/general.mixins'
 import DrawerTitle from './DrawerTitle'
 export default {
   props: {

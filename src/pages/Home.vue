@@ -16,9 +16,9 @@
 
 <script>
 import { mapState } from 'vuex'
-import HomePreferences from '../components/HomePreferences'
-import HomeMenu from '../components/HomeMenu'
-import HomeFiles from '../components/HomeFiles'
+import HomePreferences from '../components/home/HomePreferences'
+import HomeMenu from '../components/home/HomeMenu'
+import HomeFiles from '../components/home/HomeFiles'
 export default {
   name: 'PageIndex',
   components: {

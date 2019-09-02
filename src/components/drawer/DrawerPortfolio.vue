@@ -29,8 +29,8 @@
 
 <script>
 import DrawerTitle from './DrawerTitle'
-import PortfolioGithub from './PortfolioGithub'
-import PortfolioArticles from './PortfolioArticles'
+import PortfolioGithub from './portfolio/PortfolioGithub'
+import PortfolioArticles from './portfolio/PortfolioArticles'
 export default {
   props: {
     LANG: Object

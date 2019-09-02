@@ -10,10 +10,14 @@
                 <q-item-label header class="text-center">
                   <span class="text-h6">{{coding.type}}</span>
                 </q-item-label>
-                <q-item v-for="(tech, index) in getTechs(coding)" :key="index" :class="index === 0? 'q-mb-lg':'q-mb-sm'">
+                <q-item
+                  v-for="(tech, index) in getTechs(coding)"
+                  :key="index"
+                  :class="index === 0? 'q-mb-lg':'q-mb-sm'"
+                >
                   <q-item-section avatar>
-                    <q-avatar  :size="index > 0? '30px':''">
-                      <q-img :src="tech.image"/>
+                    <q-avatar :size="index > 0? '30px':''">
+                      <q-img :src="tech.image" />
                     </q-avatar>
                   </q-item-section>
                   <q-item-section>
@@ -33,7 +37,7 @@
 </template>
 
 <script>
-import GeneralMixins from '../mixins/general.mixins'
+import GeneralMixins from '../../mixins/general.mixins'
 import DrawerTitle from './DrawerTitle'
 export default {
   props: {

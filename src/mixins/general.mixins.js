@@ -15,6 +15,9 @@ export default {
         default:
           return 'grey'
       }
+    },
+    isBoolean (field) {
+      return typeof field.value === 'boolean'
     }
   }
 }
