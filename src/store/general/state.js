@@ -1,3 +1,4 @@
 export default {
-  LANG: null
+  LANG: null,
+  modules: []
 }

@@ -14,7 +14,12 @@
             <q-toggle v-model="field.value" />
           </div>
           <div v-else class="col-11">
-            <q-input v-model="field.value" outlined />
+            <div v-if="field.fields">
+              <DashboardFields :section="field" />
+            </div>
+            <div v-else>
+              <q-input v-model="field.value" outlined />
+            </div>
           </div>
         </div>
       </div>
@@ -24,11 +29,16 @@
 
 <script>
 import GeneralMixins from '../../mixins/general.mixins.js'
+import DashboardFields from './DashboardFields.vue'
 export default {
+  name: 'DashboardFields',
   props: {
     section: Object
   },
   mixins: [GeneralMixins],
+  components: {
+    DashboardFields
+  },
   methods: {
     showColor (field) {
       return typeof (field.value) === 'string' ? field.value.startsWith('#') : false

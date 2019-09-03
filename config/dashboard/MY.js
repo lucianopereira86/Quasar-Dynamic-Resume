@@ -1,12 +1,12 @@
 export default {
   languages: {
     switch: {
-      text: 'Allow switch of languages',
+      text: 'Permitir troca de idiomas',
       value: true
     },
     default: {
-      text: 'Default language',
-      value: 'EN'
+      text: 'Idioma padrão',
+      value: 'BR'
     }
   }
 }

@@ -25,7 +25,7 @@
         </q-toolbar-title>
         <div class="col-2 text-right">
           <q-avatar @click="selectLang(false)" class="cursor-pointer">
-            <q-img :src="LANG.home.flag.BR" />
+            <q-img :src="LANG.home.flag.MY" />
           </q-avatar>
           <q-toggle v-model="isEN" color="white" keep-color @input="selectLang(isEN)" />
           <q-avatar @click="selectLang(true)" class="cursor-pointer">
@@ -45,7 +45,7 @@
 import { mapState, mapMutations } from 'vuex'
 import Dashboard from '../components/dashboard/Dashboard'
 export default {
-  name: 'MyLayout',
+  name: 'MainLayout',
   components: {
     Dashboard
   },
@@ -59,7 +59,7 @@ export default {
     ...mapState('General', ['LANG'])
   },
   created () {
-    let language = localStorage.getItem('language') || 'BR'
+    let language = localStorage.getItem('language') || 'MY'
     this.isEN = language === 'EN'
     this.SET_LANG(language)
   },
@@ -70,7 +70,7 @@ export default {
     },
     selectLang (isEN) {
       this.isEN = isEN
-      let language = isEN ? 'EN' : 'BR'
+      let language = isEN ? 'EN' : 'MY'
       this.SET_LANG(language)
     }
   }

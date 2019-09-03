@@ -1,6 +1,6 @@
 export default {
   title: 'LUCIANO DE SOUSA PEREIRA',
-  message: 'Sharing knowledge is growing up as professional.',
+  message: 'Compartilhar conhecimento é se afirmar como profissional.',
   image: 'https://avatars0.githubusercontent.com/u/53023194?s=460&v=4',
   flag: {
     MY:
@@ -9,7 +9,7 @@ export default {
       'https://cdn3.iconfinder.com/data/icons/50-flags-of-the-world-circular-shape-2/60/Circular_world_Flag_145-512.png'
   },
   navBgColor: 'bg-primary',
-  navTextColor: 'text-white',
+  navTextColor: '#fff',
   menuBgColor: '#9C27B0',
   preferences: [
     {
@@ -44,12 +44,12 @@ export default {
   ],
   files: [
     {
-      title: 'Example file from url',
+      title: 'Exemplo de um arquivo por url',
       filename: 'sample.pdf',
       url: 'http://www.africau.edu/images/default/sample.pdf'
     },
     {
-      title: 'Example file for download',
+      title: 'Exemplo de um arquivo por download',
       filename: 'download.png'
     }
   ]
