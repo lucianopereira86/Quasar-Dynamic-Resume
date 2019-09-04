@@ -1,12 +1,8 @@
 export default {
+  save: 'Salvar',
+  download: 'Baixar .JSON',
   languages: {
-    switch: {
-      text: 'Permitir troca de idiomas',
-      value: true
-    },
-    default: {
-      text: 'Idioma padrão',
-      value: 'BR'
-    }
+    switch: 'Permitir troca de idiomas',
+    default: 'Idioma padrão'
   }
 }

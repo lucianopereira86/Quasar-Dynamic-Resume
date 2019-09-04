@@ -1,11 +1,11 @@
 <template>
-  <q-dialog v-model="show" position="left" v-if="LANG.coding">
+  <q-dialog v-model="show" position="left" v-if="CONFIG.coding">
     <q-layout style="min-width: 60vw; max-width:80vw;min-height:20vh;max-height:90vh">
-      <DrawerTitle icon="fas fa-code" :text="LANG.labels.drawer.coding" :LANG="LANG" />
+      <DrawerTitle icon="fas fa-code" :text="CONFIG.labels.drawer.coding" :CONFIG="CONFIG" />
       <q-card class="full-width full-height" style="overflow-y:auto;max-height:80vh">
         <q-card-section>
           <div class="row">
-            <div class="col border-col" v-for="(coding, index) in LANG.coding" :key="index">
+            <div class="col border-col" v-for="(coding, index) in CONFIG.coding" :key="index">
               <q-list>
                 <q-item-label header class="text-center">
                   <span class="text-h6">{{coding.type}}</span>
@@ -41,7 +41,7 @@ import GeneralMixins from '../../mixins/general.mixins'
 import DrawerTitle from './DrawerTitle'
 export default {
   props: {
-    LANG: Object
+    CONFIG: Object
   },
   components: {
     DrawerTitle

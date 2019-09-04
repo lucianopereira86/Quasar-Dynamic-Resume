@@ -1,6 +1,6 @@
 <template>
   <q-toolbar
-    :style="{ backgroundColor: LANG.labels.drawer.titleBgColor, color: LANG.labels.drawer.titleTextColor }"
+    :style="{ backgroundColor: CONFIG.labels.drawer.titleBgColor, color: CONFIG.labels.drawer.titleTextColor }"
   >
     <div class="row full-width items-center">
       <div class="col-1 text-center" :style="{ width: widthCol1 }">
@@ -21,7 +21,7 @@ export default {
   props: {
     icon: String,
     text: String,
-    LANG: Object,
+    CONFIG: Object,
     widthCol1: String,
     widthCol2: String
   }

@@ -3,57 +3,57 @@
     <div id="my-container" class="absolute-center"></div>
     <div class="absolute-center">
       <q-avatar size="200px">
-        <q-img :src="LANG.home.image" />
+        <q-img :src="CONFIG.home.image" />
       </q-avatar>
       <BtnMenu
         :offset="[50, -190]"
         icon="fas fa-award"
-        :text="LANG.labels.menu.awards"
+        :text="CONFIG.labels.menu.awards"
         clickable
         @click.native="openDrawer(0)"
       />
       <BtnMenu
         :offset="[145, -40]"
         icon="fas fa-graduation-cap"
-        :text="LANG.labels.menu.education"
+        :text="CONFIG.labels.menu.education"
         clickable
         @click.native="openDrawer(1)"
       />
       <BtnMenu
         :offset="[60, 110]"
         icon="fab fa-git-alt"
-        :text="LANG.labels.menu.portfolio"
+        :text="CONFIG.labels.menu.portfolio"
         clickable
         @click.native="openDrawer(2)"
       />
       <BtnMenu
         :offset="[-120, 110]"
         icon="fas fa-code"
-        :text="LANG.labels.menu.coding"
+        :text="CONFIG.labels.menu.coding"
         clickable
         @click.native="openDrawer(3)"
       />
       <BtnMenu
         :offset="[-190, -40]"
         icon="fas fa-address-card"
-        :text="LANG.labels.menu.profile"
+        :text="CONFIG.labels.menu.profile"
         clickable
         @click.native="openDrawer(4)"
       />
       <BtnMenu
         :offset="[-130, -190]"
         icon="fas fa-user-tie fa"
-        :text="LANG.labels.menu.jobs"
+        :text="CONFIG.labels.menu.jobs"
         clickable
         @click.native="openDrawer(5)"
       />
     </div>
-    <DrawerAwards ref="DrawerAwards" :LANG="LANG" />
-    <DrawerEducation ref="DrawerEducation" :LANG="LANG" />
-    <DrawerPortfolio ref="DrawerPortfolio" :LANG="LANG" />
-    <DrawerCoding ref="DrawerCoding" :LANG="LANG" />
-    <DrawerProfile ref="DrawerProfile" :LANG="LANG" />
-    <DrawerJobs ref="DrawerJobs" :LANG="LANG" />
+    <DrawerAwards ref="DrawerAwards" :CONFIG="CONFIG" />
+    <DrawerEducation ref="DrawerEducation" :CONFIG="CONFIG" />
+    <DrawerPortfolio ref="DrawerPortfolio" :CONFIG="CONFIG" />
+    <DrawerCoding ref="DrawerCoding" :CONFIG="CONFIG" />
+    <DrawerProfile ref="DrawerProfile" :CONFIG="CONFIG" />
+    <DrawerJobs ref="DrawerJobs" :CONFIG="CONFIG" />
   </div>
 </template>
 
@@ -67,7 +67,7 @@ import DrawerProfile from '../drawer/DrawerProfile'
 import DrawerJobs from '../drawer/DrawerJobs'
 export default {
   props: {
-    LANG: Object
+    CONFIG: Object
   },
   components: {
     BtnMenu,
@@ -106,7 +106,7 @@ export default {
       }
     ]
     this.$Highcharts.setOptions({
-      colors: [this.LANG.home.menuBgColor]
+      colors: [this.CONFIG.home.menuBgColor]
     })
 
     this.RenderPieChart('my-container', [

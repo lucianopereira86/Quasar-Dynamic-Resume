@@ -1,21 +1,23 @@
-import LANG from '../../lang'
+import CONFIG from '../../config'
 export default async ({ Vue }) => {
-  Vue.prototype.$LANG = {
+  Vue.prototype.$CONFIG = {
     set: function (language) {
       localStorage.setItem('language', language)
       return this.get(language)
     },
     get: function (language) {
       let lang = {}
-      lang.dashboard = LANG[`dashboard${language}`]
-      lang.labels = LANG[`labels${language}`]
-      lang.home = LANG[`home${language}`]
-      lang.profile = LANG[`profile${language}`]
-      lang.jobs = LANG[`jobs${language}`]
-      lang.coding = LANG[`coding${language}`]
-      lang.awards = LANG[`awards${language}`]
-      lang.education = LANG[`education${language}`]
-      lang.portfolio = LANG[`portfolio${language}`]
+      language = language || localStorage.getItem('language')
+      lang.general = CONFIG[`general`]
+      lang.dashboard = CONFIG[`dashboard${language}`]
+      lang.labels = CONFIG[`labels${language}`]
+      lang.home = CONFIG[`home${language}`]
+      lang.profile = CONFIG[`profile${language}`]
+      lang.jobs = CONFIG[`jobs${language}`]
+      lang.coding = CONFIG[`coding${language}`]
+      lang.awards = CONFIG[`awards${language}`]
+      lang.education = CONFIG[`education${language}`]
+      lang.portfolio = CONFIG[`portfolio${language}`]
       return lang
     }
   }

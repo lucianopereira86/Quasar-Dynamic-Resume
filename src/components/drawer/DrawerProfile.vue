@@ -1,24 +1,28 @@
 <template>
-  <q-dialog v-model="show" position="left" v-if="LANG.profile">
+  <q-dialog v-model="show" position="left" v-if="CONFIG.profile">
     <q-layout style="width: 50vw;min-height:90vh">
-      <DrawerTitle icon="fas fa-address-card" :text="LANG.labels.drawer.profile" :LANG="LANG" />
+      <DrawerTitle
+        icon="fas fa-address-card"
+        :text="CONFIG.labels.drawer.profile"
+        :CONFIG="CONFIG"
+      />
       <q-card class="full-width" style="overflow-y:auto;max-height:85vh">
         <q-card-section class="text-center bg-grey-2">
           <q-avatar size="200px">
-            <q-img :src="LANG.profile.image" />
+            <q-img :src="CONFIG.profile.image" />
           </q-avatar>
         </q-card-section>
         <q-card-section>
           <q-list>
             <q-item-label header class="text-center">
-              <span class="text-h6">{{LANG.profile.name}}</span>
+              <span class="text-h6">{{CONFIG.profile.name}}</span>
             </q-item-label>
             <q-item>
               <q-item-section avatar>
                 <q-icon color="red" name="fas fa-birthday-cake" />
               </q-item-section>
               <q-item-section>
-                <q-item-label>{{LANG.profile.birthday}}</q-item-label>
+                <q-item-label>{{CONFIG.profile.birthday}}</q-item-label>
               </q-item-section>
             </q-item>
 
@@ -28,7 +32,7 @@
               </q-item-section>
 
               <q-item-section>
-                <q-item-label>{{LANG.profile.phone}}</q-item-label>
+                <q-item-label>{{CONFIG.profile.phone}}</q-item-label>
               </q-item-section>
             </q-item>
 
@@ -38,7 +42,7 @@
               </q-item-section>
 
               <q-item-section>
-                <q-item-label>{{LANG.profile.email}}</q-item-label>
+                <q-item-label>{{CONFIG.profile.email}}</q-item-label>
               </q-item-section>
             </q-item>
 
@@ -48,7 +52,7 @@
               </q-item-section>
 
               <q-item-section>
-                <q-item-label>{{LANG.profile.location}}</q-item-label>
+                <q-item-label>{{CONFIG.profile.location}}</q-item-label>
               </q-item-section>
             </q-item>
 
@@ -58,7 +62,7 @@
               </q-item-section>
 
               <q-item-section>
-                <q-item-label>{{LANG.profile.whatsapp}}</q-item-label>
+                <q-item-label>{{CONFIG.profile.whatsapp}}</q-item-label>
               </q-item-section>
             </q-item>
 
@@ -69,7 +73,7 @@
 
               <q-item-section>
                 <q-item-label>
-                  <a :href="LANG.profile.linkedIn" target="_blank">{{LANG.profile.linkedIn}}</a>
+                  <a :href="CONFIG.profile.linkedIn" target="_blank">{{CONFIG.profile.linkedIn}}</a>
                 </q-item-label>
               </q-item-section>
             </q-item>
@@ -78,7 +82,7 @@
                 <q-icon color="info" name="fab fa-skype" />
               </q-item-section>
 
-              <q-item-section>{{LANG.profile.skype}}</q-item-section>
+              <q-item-section>{{CONFIG.profile.skype}}</q-item-section>
             </q-item>
 
             <q-item>
@@ -87,7 +91,7 @@
               </q-item-section>
 
               <q-item-section>
-                <q-item-label v-html="LANG.profile.summary" />
+                <q-item-label v-html="CONFIG.profile.summary" />
               </q-item-section>
             </q-item>
           </q-list>
@@ -101,7 +105,7 @@
 import DrawerTitle from './DrawerTitle'
 export default {
   props: {
-    LANG: Object
+    CONFIG: Object
   },
   components: {
     DrawerTitle

@@ -7,14 +7,14 @@
             <q-toggle
               class="text-subtitle2"
               left-label
-              v-model="langSwitch.value"
-              :label="langSwitch.text"
+              v-model="config.general.switch"
+              :label="getSwitch(lang)"
             />
           </div>
-          <div class="col-2" v-if="!langSwitch.value">
-            <span class="text-subtitle2">{{langDefault.text}}</span>
-            <q-radio v-model="langDefault.value" :val="myLang" :label="myLang" />
-            <q-radio v-model="langDefault.value" val="EN" label="EN" />
+          <div class="col-2" v-if="!config.general.switch">
+            <span class="text-subtitle2">{{getDefault(lang)}}</span>
+            <q-radio v-model="config.general.default" :val="myLang" :label="myLang" />
+            <q-radio v-model="config.general.default" val="EN" label="EN" />
           </div>
         </div>
       </q-expansion-item>
@@ -67,7 +67,8 @@ import DashboardFields from './DashboardFields'
 import GeneralMixins from '../../mixins/general.mixins.js'
 export default {
   props: {
-    lang: String
+    lang: String,
+    config: Object
   },
   components: {
     DashboardItens,
@@ -76,8 +77,6 @@ export default {
   mixins: [GeneralMixins],
   data () {
     return {
-      langSwitch: {},
-      langDefault: {},
       myLang: this.getDefault('MY').value
     }
   },
@@ -96,10 +95,8 @@ export default {
   methods: {
     ...mapMutations('General', ['SET_MODULES']),
     getModules () {
-      this.langSwitch = this.getSwitch(this.lang)
-      this.langDefault = this.getDefault(this.lang)
       let modules = []
-      let lang = this.$LANG.get(this.lang)
+      let lang = this.$CONFIG.get(this.lang)
       for (let obj of Object.entries(lang)) {
         let name = obj[0].toUpperCase()
         if (name !== 'DASHBOARD') {

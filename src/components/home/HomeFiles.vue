@@ -2,10 +2,10 @@
   <q-list style="overflow-y:auto;max-height:70vh">
     <q-item-label header class="text-left">
       <q-icon name="fas fa-paperclip" size="20px" class="q-mb-sm" />
-      <span class="text-h6 q-ml-sm">{{LANG.labels.home.files}}</span>
+      <span class="text-h6 q-ml-sm">{{CONFIG.labels.home.files}}</span>
     </q-item-label>
     <q-item
-      v-for="(file, index) in LANG.home.files"
+      v-for="(file, index) in CONFIG.home.files"
       :key="index"
       class="q-mb-lg text-left"
       clickable
@@ -33,7 +33,7 @@
 <script>
 export default {
   props: {
-    LANG: Object
+    CONFIG: Object
   },
   data () {
     return {
@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     getPrefs () {
-      let prefs = [...this.LANG.home.preferences]
+      let prefs = [...this.CONFIG.home.preferences]
       return prefs.sort((b, a) => b.order - a.order)
     },
     getIcon (file) {

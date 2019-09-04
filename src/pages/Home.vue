@@ -2,13 +2,13 @@
   <q-page id="home" class="relative-position">
     <div class="row">
       <div class="col-3">
-        <HomePreferences :LANG="LANG" />
+        <HomePreferences :CONFIG="CONFIG" />
       </div>
       <div class="col-6 text-center">
-        <HomeMenu :LANG="LANG" />
+        <HomeMenu :CONFIG="CONFIG" />
       </div>
       <div class="col-3 text-right">
-        <HomeFiles :LANG="LANG" />
+        <HomeFiles :CONFIG="CONFIG" />
       </div>
     </div>
   </q-page>
@@ -27,7 +27,7 @@ export default {
     HomeFiles
   },
   computed: {
-    ...mapState('General', ['LANG'])
+    ...mapState('General', ['CONFIG'])
   }
 }
 </script>

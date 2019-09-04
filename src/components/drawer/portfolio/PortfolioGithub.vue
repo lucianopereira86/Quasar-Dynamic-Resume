@@ -5,14 +5,14 @@
         <div class="col-2 text-bold text-subtitle1 q-ml-md">Sourcerer.io:</div>
         <div class="col">
           <a
-            :href="LANG.portfolio['sourcerer.io']"
+            :href="CONFIG.portfolio['sourcerer.io']"
             target="_blank"
-          >{{LANG.portfolio['sourcerer.io'].url}}</a>
+          >{{CONFIG.portfolio['sourcerer.io'].url}}</a>
         </div>
       </div>
       <q-list>
         <q-item-label header>
-          <span>{{`${repos.length} ${LANG.labels.drawer.reposFound}`}}</span>
+          <span>{{`${repos.length} ${CONFIG.labels.drawer.reposFound}`}}</span>
         </q-item-label>
         <q-item v-if="loading" class="q-mb-lg">
           <q-item-section>
@@ -41,7 +41,7 @@
 <script>
 export default {
   props: {
-    LANG: Object
+    CONFIG: Object
   },
   data () {
     return {
@@ -55,7 +55,7 @@ export default {
   methods: {
     getRepos () {
       this.loading = true
-      let id = this.LANG.portfolio.github.id
+      let id = this.CONFIG.portfolio.github.id
       this.$axios
         .get(`https://api.github.com/users/${id}/repos?per_page=100&page=1`)
         .then(resp => {

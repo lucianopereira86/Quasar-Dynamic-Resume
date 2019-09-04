@@ -26,15 +26,15 @@ The method "set" from the "/src/boot/lang.js" plugin saves the selected language
 
 ![code03](/docs/code03.JPG)
 
-The mutation "SET_LANG" from the "/src/store/general/mutations.js" file updates the "LANG" state with the object returned by the plugin.
+The mutation "SET_CONFIG" from the "/src/store/general/mutations.js" file updates the "CONFIG" state with the object returned by the plugin.
 
 ![code04](/docs/code04.JPG)
 
-The "LANG" state's attributes are responsible for showing the dynamic data in the website. Their values are located inside the "/config" folder. For example, in the "/src/components/DrawerAwards.vue" component:
+The "CONFIG" state's attributes are responsible for showing the dynamic data in the website. Their values are located inside the "/config" folder. For example, in the "/src/components/DrawerAwards.vue" component:
 
 ![code05](/docs/code05.JPG)
 
-The "LANG.labels.drawer.awards" variable's value is located at:
+The "CONFIG.labels.drawer.awards" variable's value is located at:
 
 ![code06](/docs/code06.JPG)
 

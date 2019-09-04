@@ -1,4 +1,4 @@
 export default {
-  LANG: null,
+  CONFIG: null,
   modules: []
 }

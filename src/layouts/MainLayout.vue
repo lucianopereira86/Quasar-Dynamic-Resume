@@ -1,10 +1,10 @@
 <template>
-  <q-layout view="lHh Lpr lFf" v-if="LANG">
+  <q-layout view="lHh Lpr lFf" v-if="CONFIG">
     <q-header elevated>
       <q-toolbar
         class="row"
-        :class="[LANG.home.navBgColor]"
-        :style="{ color: LANG.home.navTextColor }"
+        :class="[CONFIG.home.navBgColor]"
+        :style="{ color: CONFIG.home.navTextColor }"
       >
         <div class="col-2 text-left">
           <q-btn
@@ -18,18 +18,18 @@
           ></q-btn>
         </div>
         <q-toolbar-title class="col-8 text-h4 text-center q-pa-sm">
-          {{LANG.home.title}}
+          {{CONFIG.home.title}}
           <div class="text-subtitle1 text-center text-grey-4">
-            <cite>"{{LANG.home.message}}"</cite>
+            <cite>"{{CONFIG.home.message}}"</cite>
           </div>
         </q-toolbar-title>
-        <div class="col-2 text-right">
+        <div class="col-2 text-right" v-if="showLangs()">
           <q-avatar @click="selectLang(false)" class="cursor-pointer">
-            <q-img :src="LANG.home.flag.MY" />
+            <q-img :src="CONFIG.home.flag.MY" />
           </q-avatar>
           <q-toggle v-model="isEN" color="white" keep-color @input="selectLang(isEN)" />
           <q-avatar @click="selectLang(true)" class="cursor-pointer">
-            <q-img :src="LANG.home.flag.EN" />
+            <q-img :src="CONFIG.home.flag.EN" />
           </q-avatar>
         </div>
       </q-toolbar>
@@ -37,7 +37,7 @@
     <q-page-container>
       <router-view />
     </q-page-container>
-    <Dashboard ref="Dashboard" :LANG="LANG" />
+    <Dashboard ref="Dashboard" :CONFIG="CONFIG" />
   </q-layout>
 </template>
 
@@ -56,22 +56,25 @@ export default {
     }
   },
   computed: {
-    ...mapState('General', ['LANG'])
+    ...mapState('General', ['CONFIG'])
   },
   created () {
     let language = localStorage.getItem('language') || 'MY'
     this.isEN = language === 'EN'
-    this.SET_LANG(language)
+    this.SET_CONFIG(language)
   },
   methods: {
-    ...mapMutations('General', ['SET_LANG']),
+    ...mapMutations('General', ['SET_CONFIG']),
     showDashboard () {
       this.$refs.Dashboard.open()
     },
     selectLang (isEN) {
       this.isEN = isEN
       let language = isEN ? 'EN' : 'MY'
-      this.SET_LANG(language)
+      this.SET_CONFIG(language)
+    },
+    showLangs () {
+      return this.$CONFIG.get().general.switch
     }
   }
 }

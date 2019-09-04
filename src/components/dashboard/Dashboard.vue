@@ -1,23 +1,31 @@
 <template>
   <q-dialog v-model="show" maximized>
     <q-layout style="height:100%" class="bg-white">
-      <DrawerTitle icon="dashboard" text="Dashboard" :LANG="LANG" widthCol1="4%" widthCol2="87%" />
+      <DrawerTitle
+        icon="dashboard"
+        text="Dashboard"
+        :CONFIG="CONFIG"
+        widthCol1="4%"
+        widthCol2="87%"
+        :close="close"
+      />
       <div class="row q-pa-md items-center">
         <div class="col-4 offset-4 text-center">
           <q-avatar @click="lang = 'MY'" class="cursor-pointer q-mr-md relative-position">
-            <q-img :src="LANG.home.flag.MY" />
+            <q-img :src="CONFIG.home.flag.MY" />
             <div class="selected" v-if="lang === 'MY'"></div>
           </q-avatar>
           <q-avatar @click="lang = 'EN'" class="cursor-pointer">
-            <q-img :src="LANG.home.flag.EN" />
+            <q-img :src="CONFIG.home.flag.EN" />
             <div class="selected" v-if="lang === 'EN'"></div>
           </q-avatar>
         </div>
-        <div class="col-4 text-right q-pr-md">
-          <q-btn color="primary" label="DOWNLOAD .JSON" @click="download()"></q-btn>
+        <div class="col-4 text-right">
+          <q-btn color="positive" :label="config.dashboard.save" @click="save()" class="q-mr-lg"></q-btn>
+          <q-btn color="primary" :label="config.dashboard.download" @click="download()"></q-btn>
         </div>
       </div>
-      <DashboardModules :lang="lang" />
+      <DashboardModules :lang="lang" :config="config" />
     </q-layout>
   </q-dialog>
 </template>
@@ -29,7 +37,7 @@ import DashboardModules from './DashboardModules'
 import GeneralMixins from '../../mixins/general.mixins.js'
 export default {
   props: {
-    LANG: Object
+    CONFIG: Object
   },
   components: {
     DrawerTitle,
@@ -39,29 +47,40 @@ export default {
   data () {
     return {
       show: false,
-      lang: 'MY'
+      lang: 'MY',
+      config: {}
     }
   },
   computed: {
     ...mapState('General', ['modules'])
   },
+  created () {
+    let config = localStorage.getItem('config')
+    if (config) this.config = JSON.parse(config)
+    else this.config = this.$CONFIG.get()
+    console.log('this.config', this.config)
+  },
   methods: {
     open () {
       this.show = true
     },
+    save () {
+      localStorage.setItem('config', JSON.stringify(this.getConfig()))
+    },
     download () {
-      let config = {
-        dashboard: {
-          switch: this.getSwitch(this.lang),
-          default: this.getDefault(this.lang)
-        },
-        modules: this.modules
-      }
-      var dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(config))
+      var dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(this.getConfig()))
       var a = document.createElement('a')
       a.setAttribute('href', dataStr)
       a.setAttribute('download', 'config.json')
       a.click()
+    },
+    getConfig () {
+      let config = { ...this.$CONFIG.get(this.lang) }
+      config.modules = this.modules
+      return config
+    },
+    close () {
+      this.SET_CONFIG(this.config)
     }
   }
 }

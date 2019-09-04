@@ -1,12 +1,8 @@
 export default {
+  save: 'Save',
+  download: 'Download .JSON',
   languages: {
-    switch: {
-      text: 'Allow switch of languages',
-      value: true
-    },
-    default: {
-      text: 'Default language',
-      value: 'EN'
-    }
+    switch: 'Allow switch of languages',
+    default: 'Default language'
   }
 }

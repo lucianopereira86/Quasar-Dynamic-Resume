@@ -1,10 +1,10 @@
 export default {
   methods: {
     getSwitch (lang) {
-      return this.$LANG.get(lang).dashboard.languages.switch
+      return this.$CONFIG.get(lang).dashboard.languages.switch
     },
     getDefault (lang) {
-      return this.$LANG.get(lang).dashboard.languages.default
+      return this.$CONFIG.get(lang).dashboard.languages.default
     },
     getColor (rating) {
       switch (rating) {

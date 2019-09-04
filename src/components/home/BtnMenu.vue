@@ -16,7 +16,7 @@ export default {
     text: String
   },
   computed: {
-    ...mapState('General', ['LANG'])
+    ...mapState('General', ['CONFIG'])
   }
 }
 </script>

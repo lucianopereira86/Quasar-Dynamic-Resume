@@ -1,11 +1,11 @@
 <template>
-  <q-dialog v-model="show" position="left" v-if="LANG.jobs">
+  <q-dialog v-model="show" position="left" v-if="CONFIG.jobs">
     <q-layout style="min-width: 50vw;min-height:20vh;max-height:90vh">
-      <DrawerTitle icon="fas fa-user-tie fa" :text="LANG.labels.drawer.jobs" :LANG="LANG" />
+      <DrawerTitle icon="fas fa-user-tie fa" :text="CONFIG.labels.drawer.jobs" :CONFIG="CONFIG" />
       <q-card class="full-width full-height" style="overflow-y:auto;max-height:80vh">
         <q-card-section>
           <div class="row">
-            <div class="col" v-for="(jobs, index) in LANG.jobs" :key="index">
+            <div class="col" v-for="(jobs, index) in CONFIG.jobs" :key="index">
               <q-list>
                 <q-item-label header class="text-center">
                   <span class="text-h6">{{jobs.type}}</span>
@@ -53,7 +53,7 @@
 import DrawerTitle from './DrawerTitle'
 export default {
   props: {
-    LANG: Object
+    CONFIG: Object
   },
   components: {
     DrawerTitle

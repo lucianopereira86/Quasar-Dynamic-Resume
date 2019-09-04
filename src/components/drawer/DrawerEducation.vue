@@ -1,10 +1,14 @@
 <template>
-  <q-dialog v-model="show" position="right" v-if="LANG.education">
+  <q-dialog v-model="show" position="right" v-if="CONFIG.education">
     <q-layout style="min-width: 50vw;min-height:20vh;max-height:90vh">
-      <DrawerTitle icon="fas fa-graduation-cap" :text="LANG.labels.drawer.education" :LANG="LANG" />
+      <DrawerTitle
+        icon="fas fa-graduation-cap"
+        :text="CONFIG.labels.drawer.education"
+        :CONFIG="CONFIG"
+      />
       <q-card class="full-width full-height" style="overflow-y:auto;max-height:80vh">
         <q-card-section>
-          <q-list v-for="(school, index) in LANG.education.schools" :key="index">
+          <q-list v-for="(school, index) in CONFIG.education.schools" :key="index">
             <q-item-label header class="text-center">
               <q-img :src="school.image" style="max-height:10vh;max-width:20vw" />
             </q-item-label>
@@ -19,9 +23,13 @@
           </q-list>
           <q-list class="row">
             <q-item-label header class="col-12 text-left">
-              <span class="text-h6">{{LANG.labels.drawer.languages}}</span>
+              <span class="text-h6">{{CONFIG.labels.drawer.languages}}</span>
             </q-item-label>
-            <q-item v-for="(language, index) in LANG.education.languages" :key="index" class="co-2">
+            <q-item
+              v-for="(language, index) in CONFIG.education.languages"
+              :key="index"
+              class="co-2"
+            >
               <q-item-section avatar>
                 <q-avatar>
                   <q-img :src="language.flag" />
@@ -44,7 +52,7 @@ import GeneralMixins from '../../mixins/general.mixins'
 import DrawerTitle from './DrawerTitle'
 export default {
   props: {
-    LANG: Object
+    CONFIG: Object
   },
   components: {
     DrawerTitle
