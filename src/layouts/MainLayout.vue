@@ -23,7 +23,7 @@
             <cite>"{{CONFIG.home.message}}"</cite>
           </div>
         </q-toolbar-title>
-        <div class="col-2 text-right" v-if="showLangs()">
+        <div class="col-2 text-right" v-if="CONFIG.general.languages.switch">
           <q-avatar @click="selectLang(false)" class="cursor-pointer">
             <q-img :src="CONFIG.home.flag.MY" />
           </q-avatar>
@@ -37,7 +37,7 @@
     <q-page-container>
       <router-view />
     </q-page-container>
-    <Dashboard ref="Dashboard" :CONFIG="CONFIG" />
+    <Dashboard ref="Dashboard" />
   </q-layout>
 </template>
 
@@ -61,20 +61,18 @@ export default {
   created () {
     let language = localStorage.getItem('language') || 'MY'
     this.isEN = language === 'EN'
-    this.SET_CONFIG(language)
+    this.SET_LANGUAGE(language)
+    console.log('CONFIG', this.CONFIG)
   },
   methods: {
-    ...mapMutations('General', ['SET_CONFIG']),
+    ...mapMutations('General', ['SET_LANGUAGE']),
     showDashboard () {
       this.$refs.Dashboard.open()
     },
     selectLang (isEN) {
       this.isEN = isEN
       let language = isEN ? 'EN' : 'MY'
-      this.SET_CONFIG(language)
-    },
-    showLangs () {
-      return this.$CONFIG.get().general.switch
+      this.SET_LANGUAGE(language)
     }
   }
 }

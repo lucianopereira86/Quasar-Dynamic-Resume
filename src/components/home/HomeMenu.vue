@@ -6,42 +6,42 @@
         <q-img :src="CONFIG.home.image" />
       </q-avatar>
       <BtnMenu
-        :offset="[50, -190]"
+        :offset="[-20, 210]"
         icon="fas fa-award"
         :text="CONFIG.labels.menu.awards"
         clickable
         @click.native="openDrawer(0)"
       />
       <BtnMenu
-        :offset="[145, -40]"
+        :offset="[-110, 60]"
         icon="fas fa-graduation-cap"
         :text="CONFIG.labels.menu.education"
         clickable
         @click.native="openDrawer(1)"
       />
       <BtnMenu
-        :offset="[60, 110]"
+        :offset="[-20, -90]"
         icon="fab fa-git-alt"
         :text="CONFIG.labels.menu.portfolio"
         clickable
         @click.native="openDrawer(2)"
       />
       <BtnMenu
-        :offset="[-120, 110]"
+        :offset="[140, -90]"
         icon="fas fa-code"
         :text="CONFIG.labels.menu.coding"
         clickable
         @click.native="openDrawer(3)"
       />
       <BtnMenu
-        :offset="[-190, -40]"
+        :offset="[240, 50]"
         icon="fas fa-address-card"
         :text="CONFIG.labels.menu.profile"
         clickable
         @click.native="openDrawer(4)"
       />
       <BtnMenu
-        :offset="[-130, -190]"
+        :offset="[150, 210]"
         icon="fas fa-user-tie fa"
         :text="CONFIG.labels.menu.jobs"
         clickable

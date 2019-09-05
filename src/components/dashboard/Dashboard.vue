@@ -1,5 +1,5 @@
 <template>
-  <q-dialog v-model="show" maximized>
+  <q-dialog v-model="show" maximized v-if="config">
     <q-layout style="height:100%" class="bg-white">
       <DrawerTitle
         icon="dashboard"
@@ -7,7 +7,6 @@
         :CONFIG="CONFIG"
         widthCol1="4%"
         widthCol2="87%"
-        :close="close"
       />
       <div class="row q-pa-md items-center">
         <div class="col-4 offset-4 text-center">
@@ -31,14 +30,11 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 import DrawerTitle from '../drawer/DrawerTitle'
 import DashboardModules from './DashboardModules'
 import GeneralMixins from '../../mixins/general.mixins.js'
 export default {
-  props: {
-    CONFIG: Object
-  },
   components: {
     DrawerTitle,
     DashboardModules
@@ -48,39 +44,38 @@ export default {
     return {
       show: false,
       lang: 'MY',
-      config: {}
+      config: null
     }
   },
   computed: {
-    ...mapState('General', ['modules'])
-  },
-  created () {
-    let config = localStorage.getItem('config')
-    if (config) this.config = JSON.parse(config)
-    else this.config = this.$CONFIG.get()
-    console.log('this.config', this.config)
+    ...mapState('General', ['CONFIG'])
   },
   methods: {
+    ...mapMutations('General', ['SET_CONFIG', 'SET_LANGUAGE']),
     open () {
+      let config = localStorage.getItem('config')
+      if (config) { this.config = JSON.parse(config) } else { this.config = this.$CONFIG.get() }
       this.show = true
     },
     save () {
+      this.SET_LANGUAGE(this.lang)
       localStorage.setItem('config', JSON.stringify(this.getConfig()))
+      this.close()
     },
     download () {
       var dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(this.getConfig()))
       var a = document.createElement('a')
       a.setAttribute('href', dataStr)
-      a.setAttribute('download', 'config.json')
+      a.setAttribute('download', `config.${this.lang}.json`)
       a.click()
     },
     getConfig () {
-      let config = { ...this.$CONFIG.get(this.lang) }
-      config.modules = this.modules
-      return config
+      this.SET_CONFIG({ ...this.config })
+      console.log('this.config', this.config)
+      return this.config
     },
     close () {
-      this.SET_CONFIG(this.config)
+      this.show = false
     }
   }
 }

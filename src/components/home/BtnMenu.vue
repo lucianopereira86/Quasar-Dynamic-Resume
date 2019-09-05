@@ -1,5 +1,5 @@
 <template>
-  <q-page-sticky position="center" :offset="offset" class="text-center cursor-pointer">
+  <q-page-sticky :offset="offset" class="text-center cursor-pointer btnMenu">
     <q-icon color="white" :name="icon" size="3rem"></q-icon>
     <div class="text-white text-subtitle2 q-mt-md">
       <span>{{text}}</span>
@@ -21,5 +21,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.btnMenu {
+  width: 75px;
+  height: 85px;
+}
 </style>

@@ -7,19 +7,19 @@
             <q-toggle
               class="text-subtitle2"
               left-label
-              v-model="config.general.switch"
+              v-model="config.general.languages.switch"
               :label="getSwitch(lang)"
             />
           </div>
-          <div class="col-2" v-if="!config.general.switch">
+          <div class="col-8" v-if="!config.general.languages.switch">
             <span class="text-subtitle2">{{getDefault(lang)}}</span>
-            <q-radio v-model="config.general.default" :val="myLang" :label="myLang" />
-            <q-radio v-model="config.general.default" val="EN" label="EN" />
+            <q-radio v-model="config.general.languages.default" :val="myLang" :label="myLang" />
+            <q-radio v-model="config.general.languages.default" val="EN" label="EN" />
           </div>
         </div>
       </q-expansion-item>
     </q-card-section>
-    <q-card-section v-for="(mod, index) in modules" :key="index">
+    <q-card-section v-for="(mod, index) in config.modules" :key="index">
       <q-expansion-item
         bordered
         expand-separator
@@ -61,7 +61,6 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
 import DashboardItens from './DashboardItens'
 import DashboardFields from './DashboardFields'
 import GeneralMixins from '../../mixins/general.mixins.js'
@@ -77,7 +76,7 @@ export default {
   mixins: [GeneralMixins],
   data () {
     return {
-      myLang: this.getDefault('MY').value
+      myLang: this.config.general.languages.default
     }
   },
   watch: {
@@ -86,16 +85,12 @@ export default {
       this.getModules()
     }
   },
-  computed: {
-    ...mapState('General', ['modules'])
-  },
   mounted () {
     this.getModules()
   },
   methods: {
-    ...mapMutations('General', ['SET_MODULES']),
     getModules () {
-      let modules = []
+      this.config.modules = []
       let lang = this.$CONFIG.get(this.lang)
       for (let obj of Object.entries(lang)) {
         let name = obj[0].toUpperCase()
@@ -110,10 +105,9 @@ export default {
           } else {
             this.getSections(mod, obj[1])
           }
-          modules.push(mod)
+          this.config.modules.push(mod)
         }
       }
-      this.SET_MODULES(modules)
     },
     getSections (mod, obj) {
       for (let obj2 of Object.entries(obj)) {
