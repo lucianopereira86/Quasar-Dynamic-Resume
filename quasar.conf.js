@@ -56,7 +56,10 @@ module.exports = function (ctx) {
         'QInput',
         'QColor',
         'QExpansionItem',
-        'QRadio'
+        'QRadio',
+        'QFooter',
+        'QSpace',
+        'QSelect'
       ],
 
       directives: ['Ripple', 'ClosePopup'],

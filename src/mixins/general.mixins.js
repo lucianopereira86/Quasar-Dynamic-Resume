@@ -1,29 +1,45 @@
+import { mapMutations } from 'vuex'
 export default {
   methods: {
-    getSwitch (lang) {
-      return this.$CONFIG.get(lang).dashboard.languages.switch
+    ...mapMutations('General', ['SET_MODULE']),
+    isDebug () {
+      return process.env.NODE_ENV === 'development'
     },
-    getDefault (lang) {
-      return this.$CONFIG.get(lang).dashboard.languages.default
+    showConfig ($module) {
+      this.$refs[`Dialog${$module}Config`].open()
     },
-    getColor (rating) {
-      switch (rating) {
-        case 1:
-          return 'negative'
-        case 2:
-          return 'orange'
-        case 3:
-          return 'yellow'
-        case 4:
-          return 'positive'
-        case 5:
-          return 'info'
-        default:
-          return 'grey'
-      }
+    getModel ($module) {
+      return JSON.parse(JSON.stringify(this[$module]))
     },
-    isBoolean (field) {
-      return typeof field.value === 'boolean'
+    saveConfig ($module, model, callback) {
+      let obj = {}
+      let m = JSON.parse(JSON.stringify(model))
+      obj[$module.toLowerCase()] = m
+      this.SET_MODULE(obj)
+      this[$module.toLowerCase()] = m
+      if (callback) callback()
+    },
+    getIcon (file) {
+      let mimeType = this.$mime.lookup(file.filename)
+      if (mimeType.includes('image')) return 'fas fa-file-image'
+      else if (mimeType.includes('audio')) return 'fas fa-file-audio'
+      else if (mimeType.includes('video')) return 'fas fa-file-video'
+      else if (mimeType.includes('pdf')) return 'fas fa-file-pdf'
+      else if (mimeType.includes('powerpoint')) {
+        return 'fas fa-file-powerpoint'
+      } else if (mimeType.includes('excel')) return 'fas fa-file-excel'
+      else return 'fas fa-file-alt'
+    },
+    getColorIcon (file) {
+      let mimeType = this.$mime.lookup(file.filename)
+      if (mimeType.includes('image')) return 'primary'
+      else if (mimeType.includes('audio')) return 'info'
+      else if (mimeType.includes('video')) return 'warning'
+      else if (mimeType.includes('pdf')) return 'negative'
+      else if (mimeType.includes('powerpoint')) {
+        return 'accent'
+      } else if (mimeType.includes('excel')) return 'positive'
+      else return 'grey'
     }
   }
 }

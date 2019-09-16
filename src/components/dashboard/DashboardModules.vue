@@ -194,7 +194,4 @@ export default {
 </script>
 
 <style>
-.my-picker {
-  width: 250px;
-}
 </style>

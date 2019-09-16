@@ -12,6 +12,7 @@ export default {
     jobs: 'Profissional'
   },
   drawer: {
+    config: 'Configurações Gerais',
     awards: 'Eventos e Conquistas',
     education: 'Formação Acadêmica',
     portfolio: 'Portfólio',

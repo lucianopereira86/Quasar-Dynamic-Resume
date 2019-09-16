@@ -1,8 +1,8 @@
 <template>
-  <q-list style="overflow-y:auto;max-height:70vh">
+  <q-list class="files-list relative-position">
     <q-item-label header class="text-left">
       <q-icon name="fas fa-paperclip" size="20px" class="q-mb-sm" />
-      <span class="text-h6 q-ml-sm">{{CONFIG.labels.home.files}}</span>
+      <span class="text-h6 q-ml-sm">{{CONFIG.home[CONFIG.lang()].files}}</span>
     </q-item-label>
     <q-item
       v-for="(file, index) in CONFIG.home.files"
@@ -20,64 +20,57 @@
         <q-item-label>{{file.title}}</q-item-label>
         <q-item-label caption>{{file.filename}}</q-item-label>
       </q-item-section>
-      <a
-        :id="`id_${index}`"
-        style="visibility: hidden"
-        :href="file.url"
-        target="_blank"
-      >{{file.filename}}</a>
     </q-item>
+    <div class="q-ma-sm absolute-right" v-if="isDebug()">
+      <q-btn icon="edit" round outline @click="showConfig('HomeFiles')" color="white"></q-btn>
+    </div>
+    <DialogConfig
+      ref="DialogHomeFilesConfig"
+      title="FILES"
+      :CONFIG="CONFIG"
+      :model="model"
+      :save="(model) => saveConfig('home', model)"
+    >
+      <template v-slot:default="slotProps">
+        <ConfigHomeFiles :lang="slotProps.lang" :model="slotProps.model" />
+      </template>
+    </DialogConfig>
   </q-list>
 </template>
 
 <script>
+import GeneralMixins from '../../mixins/general.mixins'
+import DialogConfig from '../utils/DialogConfig'
+import ConfigHomeFiles from '../config/home/ConfigHomeFiles'
 export default {
   props: {
     CONFIG: Object
   },
+  mixins: [GeneralMixins],
+  components: {
+    DialogConfig,
+    ConfigHomeFiles
+  },
   data () {
     return {
       showPDF: false,
-      pdfURL: ''
+      pdfURL: '',
+      model: null
     }
   },
+  mounted () {
+    this.model = JSON.parse(JSON.stringify(this.CONFIG.home))
+  },
   methods: {
-    getPrefs () {
-      let prefs = [...this.CONFIG.home.preferences]
-      return prefs.sort((b, a) => b.order - a.order)
-    },
-    getIcon (file) {
-      let mimeType = this.$mime.lookup(file.filename)
-      if (mimeType.includes('image')) return 'fas fa-file-image'
-      else if (mimeType.includes('audio')) return 'fas fa-file-audio'
-      else if (mimeType.includes('video')) return 'fas fa-file-video'
-      else if (mimeType.includes('pdf')) return 'fas fa-file-pdf'
-      else if (mimeType.includes('powerpoint')) { return 'fas fa-file-powerpoint' } else if (mimeType.includes('excel')) return 'fas fa-file-excel'
-      else return 'fas fa-file-alt'
-    },
-    getColorIcon (file) {
-      let mimeType = this.$mime.lookup(file.filename)
-      if (mimeType.includes('image')) return 'primary'
-      else if (mimeType.includes('audio')) return 'info'
-      else if (mimeType.includes('video')) return 'warning'
-      else if (mimeType.includes('pdf')) return 'negative'
-      else if (mimeType.includes('powerpoint')) { return 'accent' } else if (mimeType.includes('excel')) return 'positive'
-      else return 'grey'
-    },
     download (file, index) {
       const self = this
       if (file.url) {
-        window.$(`#id_${index}`).prop('href', file.url).prop('download', file.filename)[0].click()
+        self.createAnchorToDownloadFile(file.filename, file.url)
       } else {
         let url = file.url || `../statics/files/${file.filename}`
         fetch(url)
           .then(res => res.blob())
           .then(blob => {
-            console.log('blob', blob)
-            // let anchor = document.createElement('a')
-            // anchor.href = window.URL.createObjectURL(blob)
-            // anchor.download = file.filename
-            // anchor.click()
             let url = window.URL.createObjectURL(blob)
             self.createAnchorToDownloadFile(file.filename, url)
           })
@@ -90,11 +83,16 @@ export default {
       let anchor = document.createElement('a')
       anchor.href = url
       anchor.download = filename
+      anchor.target = '_blank'
       anchor.click()
     }
   }
 }
 </script>
 
-<style>
+<style scoped>
+.files-list {
+  overflow-y: auto;
+  max-height: 70vh;
+}
 </style>

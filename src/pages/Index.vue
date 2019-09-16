@@ -1,5 +1,5 @@
 <template>
-  <q-page class="relative-position">
+  <q-page class="relative-position" v-if="CONFIG">
     <div id="my-container" class="absolute-center"></div>
     <div class="absolute-top text-center text-grey text-h5 q-mt-lg">
       <cite>"{{CONFIG.home.message}}"</cite>
@@ -61,7 +61,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import BtnMenu from '../components/home/BtnMenu'
 import DrawerAwards from '../components/drawer/DrawerAwards'
 import DrawerEducation from '../components/drawer/DrawerEducation'
@@ -71,6 +70,9 @@ import DrawerProfile from '../components/drawer/DrawerProfile'
 import DrawerJobs from '../components/drawer/DrawerJobs'
 export default {
   name: 'PageIndex',
+  props: {
+    CONFIG: Object
+  },
   components: {
     BtnMenu,
     DrawerAwards,
@@ -86,9 +88,6 @@ export default {
       arrayDrawer: [],
       color: '#9c27b0'
     }
-  },
-  computed: {
-    ...mapState('General', ['CONFIG'])
   },
   mounted () {
     this.arrayDrawer = [{
