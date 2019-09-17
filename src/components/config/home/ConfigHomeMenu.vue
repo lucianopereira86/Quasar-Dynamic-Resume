@@ -1,6 +1,6 @@
 <template>
   <q-card v-if="model" class="q-pa-md config-container">
-    <ConfigIcon :model="model" prop="picture" label="Your Profile Picture" />
+    <ConfigIcon :model="model" prop="picture" label="Profile Picture URL" />
     <q-card-section class="row">
       <div class="col">
         <div class="q-mb-md">

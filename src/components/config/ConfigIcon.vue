@@ -16,6 +16,7 @@
 
 <script>
 export default {
+  name: 'ConfigIcon',
   props: {
     model: Object,
     prop: String,

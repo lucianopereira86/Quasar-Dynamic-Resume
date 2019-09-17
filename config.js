@@ -72,7 +72,7 @@
 
 // export default CONFIG
 
-var files = ['nav', 'general', 'home']
+var files = ['nav', 'general', 'home', 'profile']
 
 // var folders = [
 //   'dashboard',

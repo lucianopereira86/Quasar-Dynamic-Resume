@@ -13,6 +13,7 @@
 
 <script>
 export default {
+  name: 'LanguageSwitch',
   props: {
     CONFIG: Object,
     MY: Object,

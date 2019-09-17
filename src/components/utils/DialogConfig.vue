@@ -26,6 +26,7 @@
 import DrawerTitle from '../drawer/DrawerTitle'
 import LanguageSwitch from './LanguageSwitch'
 export default {
+  name: 'DialogConfig',
   props: {
     CONFIG: Object,
     model: Object,
