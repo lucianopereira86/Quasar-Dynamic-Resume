@@ -3,20 +3,14 @@
     :style="{ backgroundColor: CONFIG.general.window.titleBgColor, color: CONFIG.general.window.titleTextColor }"
   >
     <div class="row full-width items-center">
-      <div class="col-1 text-center">
+      <div class="col-1 text-right">
         <q-icon :name="icon" size="25px" />
       </div>
-      <div class="col-9">
-        <span class="text-h5">{{text}}</span>
+      <div class="col-9 q-pl-md">
+        <span class="text-h5">{{title}}</span>
       </div>
       <div class="col-1">
-        <q-btn
-          icon="edit"
-          round
-          outline
-          @click="showConfig(`Drawer${moduleName}`)"
-          v-if="isDebug()"
-        ></q-btn>
+        <q-btn icon="edit" round flat @click="showConfig(`Drawer${moduleName}`)" v-if="isDebug()"></q-btn>
       </div>
       <div class="col-1">
         <q-btn round flat class="float-right" icon="close" color="white" v-close-popup></q-btn>
@@ -27,9 +21,9 @@
       :title="title"
       :CONFIG="CONFIG"
       :model="model"
-      :save="(model) => saveConfig(moduleName.toLowerCase(), model)"
+      :save="(model) => saveConfig(moduleName.toLowerCase(), model, callback)"
     >
-      <slot></slot>
+      <slot :lang="CONFIG.lang()" :model="model" :CONFIG="CONFIG"></slot>
     </DialogConfig>
   </q-toolbar>
 </template>
@@ -43,9 +37,9 @@ export default {
     title: String,
     moduleName: String,
     icon: String,
-    text: String,
     CONFIG: Object,
-    model: Object
+    model: Object,
+    callback: Function
   },
   components: {
     DialogConfig

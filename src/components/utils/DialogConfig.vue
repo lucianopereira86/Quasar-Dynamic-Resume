@@ -1,7 +1,7 @@
 <template>
   <q-dialog v-model="show">
     <q-layout class="bg-white dialog-layout">
-      <DrawerTitle icon="fas fa-cog" :text="title" :CONFIG="CONFIG" />
+      <ConfigTitle :title="title" :CONFIG="CONFIG" />
       <div class="text-center q-pa-sm">
         <LanguageSwitch
           v-if="!hideLanguages"
@@ -10,7 +10,7 @@
           :EN="{ click: () => lang = 'EN', select: lang === 'EN' }"
         />
       </div>
-      <slot :lang="lang" :model="model"></slot>
+      <slot :lang="lang" :model="model" :CONFIG="CONFIG"></slot>
       <q-footer class="shadow-2">
         <q-toolbar class="bg-white">
           <q-space />
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import DrawerTitle from '../drawer/DrawerTitle'
+import ConfigTitle from '../config/ConfigTitle'
 import LanguageSwitch from './LanguageSwitch'
 export default {
   name: 'DialogConfig',
@@ -35,7 +35,7 @@ export default {
     hideLanguages: Boolean
   },
   components: {
-    DrawerTitle,
+    ConfigTitle,
     LanguageSwitch
   },
   data () {

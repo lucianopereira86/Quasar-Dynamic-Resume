@@ -5,50 +5,69 @@
     </q-card-section>
     <ConfigIcon :model="model" prop="image" label="Profile Picture URL" />
     <q-card-section>
+      <q-input rounded dense v-model="model.name" label="Name" class="bg-white"></q-input>
+    </q-card-section>
+    <q-card-section class="q-pb-none">
+      <span class="text-subtitle1 text-black text-bold">Personal Data</span>
+    </q-card-section>
+    <q-card-section>
       <q-list>
-        <q-item-label header class="text-center">
-          <span class="text-h6">{{model.name}}</span>
-        </q-item-label>
-
-        <q-item v-for="key in model" :key="key">
-          <q-item-section avatar>
-            <q-icon :color="getIconColor(key)" :name="getIconName(key)" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>
-              <q-input rounded dense v-model="model[key]" class="bg-white"></q-input>
-            </q-item-label>
-          </q-item-section>
-        </q-item>
+        <ItemList
+          color="red"
+          icon="fas fa-birthday-cake"
+          :model="model[CONFIG.lang()]"
+          prop="birthday"
+          :masks="['##/##/####']"
+        />
+        <ItemList
+          color="secondary"
+          icon="fas fa-phone"
+          :model="model[CONFIG.lang()]"
+          prop="phone"
+          :masks="['(##) ####-####', '(##) #####-####']"
+        />
+        <ItemList color="accent" icon="fas fa-at" :model="model" prop="email" />
+        <ItemList
+          color="warning"
+          icon="fas fa-globe-americas"
+          :model="model[CONFIG.lang()]"
+          prop="location"
+        />
+        <ItemList
+          color="positive"
+          icon="fab fa-whatsapp"
+          :model="model[CONFIG.lang()]"
+          prop="whatsapp"
+          :masks="['(##) ####-####', '(##) #####-####']"
+        />
+        <ItemList color="primary" icon="fab fa-linkedin-in" :model="model" prop="linkedIn" />
+        <ItemList color="black" icon="fab fa-github" :model="model" prop="github" />
+        <ItemList color="info" icon="fab fa-skype" :model="model" prop="skype" />
+        <ItemList
+          color="grey"
+          icon="far fa-comment-dots"
+          :model="model[CONFIG.lang()]"
+          prop="summary"
+          :isArea="true"
+        />
       </q-list>
     </q-card-section>
   </q-card>
 </template>
 
 <script>
+import ItemList from '../../utils/ItemList'
+import ConfigIcon from '../../config/ConfigIcon'
 export default {
   name: 'ConfigDrawerProfile',
   props: {
     lang: String,
     model: Object,
-    fields: Array
+    CONFIG: Object
   },
-  methods: {
-    getField (key) {
-      return this.fields.map(f => f.prop === key)[0]
-    },
-    getIconColor (key) {
-      return this.getField(key).color
-    },
-    getIconName (key) {
-      return this.getField(key).name
-    },
-    isAnchor (key) {
-      return this.getField(key).isAnchor
-    },
-    getValue (key) {
-      return this.getField(key).value
-    }
+  components: {
+    ItemList,
+    ConfigIcon
   }
 }
 </script>

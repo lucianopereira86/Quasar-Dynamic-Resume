@@ -2,15 +2,15 @@
   <q-dialog v-model="show" position="left" v-if="model">
     <q-layout style="width: 50vw;min-height:90vh">
       <DrawerTitle
-        title="PROFILE"
         moduleName="Profile"
+        :title="title"
         icon="fas fa-address-card"
-        :text="model.title"
         :CONFIG="CONFIG"
         :model="model"
+        :callback="() => getFields()"
       >
         <template v-slot:default="slotProps">
-          <ConfigDrawerProfile :lang="slotProps.lang" :model="slotProps.model" :field="fields" />
+          <ConfigDrawerProfile :lang="slotProps.lang" :model="slotProps.model" :CONFIG="CONFIG" />
         </template>
       </DrawerTitle>
       <q-card class="full-width" style="overflow-y:auto;max-height:85vh">
@@ -20,7 +20,7 @@
           </q-avatar>
         </q-card-section>
         <q-card-section>
-          <q-list>
+          <q-list separator>
             <q-item-label header class="text-center">
               <span class="text-h6">{{model.name}}</span>
             </q-item-label>
@@ -32,7 +32,9 @@
               <q-item-section>
                 <q-item-label>
                   <a v-if="field.isAnchor" :href="field.value" target="_blank">{{field.value}}</a>
-                  <span v-else>{{field.value}}</span>
+                  <div v-else>
+                    <span class="drawer-profile-span" v-html="field.value"></span>
+                  </div>
                 </q-item-label>
               </q-item-section>
             </q-item>
@@ -59,17 +61,21 @@ export default {
     return {
       show: false,
       model: null,
+      title: '',
       fields: []
     }
   },
   methods: {
     open () {
+      console.log('this.CONFIG.profile', this.CONFIG.profile)
       this.model = JSON.parse(JSON.stringify(this.CONFIG.profile))
       this.getFields()
       this.show = true
     },
     getFields () {
+      this.title = this.model[this.CONFIG.lang()].profile
       let profileLang = this.model[this.CONFIG.lang()]
+      this.fields = []
       this.fields.push(
         { color: 'red', icon: 'fas fa-birthday-cake', prop: 'birthday', value: profileLang.birthday },
         { color: 'secondary', icon: 'fas fa-phone', prop: 'phone', value: profileLang.phone },
@@ -86,5 +92,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.drawer-profile-span {
+  white-space: pre-wrap;
+}
 </style>
